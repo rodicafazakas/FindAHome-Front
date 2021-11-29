@@ -19,3 +19,13 @@ export const deleteAnnouncementAction = (id) => ({
   type: actionTypes.deleteAnnouncement,
   id,
 });
+
+export const loginUserAction = (user) => ({
+  type: actionTypes.loginUser,
+  user,
+});
+
+export const registerUserAction = (user) => ({
+  type: actionTypes.registerUser,
+  user,
+});
