@@ -1,0 +1,45 @@
+@import "../../../src/styles/variables";
+
+.homepage {
+  &__image {
+    background-image: url("../../images/home1.jpg");
+    width: 100vw;
+    height: 195px;
+    background-size: cover;
+    margin-top: 0;
+  }
+}
+
+h3 {
+  padding: 7px;
+  margin: 0;
+  text-align: center;
+}
+
+.search {
+  height: 390px;
+  background-color: $secondary;
+  display: flex;
+  justify-content: column;
+
+  .search-text {
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .search-box {
+    background-color: $primary;
+    display: flex;
+    flex-direction: column;
+
+    &__input {
+      width: 230px;
+      height: 30px;
+    }
+
+    &__button {
+      width: 230px;
+      height: 30px;
+    }
+  }
+}
