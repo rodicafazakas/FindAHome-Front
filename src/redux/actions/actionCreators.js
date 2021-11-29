@@ -15,6 +15,11 @@ export const createAnnouncementAction = (announcement) => ({
   announcement,
 });
 
+export const updateAnnouncementAction = (announcement) => ({
+  type: actionTypes.updateAnnouncement,
+  announcement,
+});
+
 export const deleteAnnouncementAction = (id) => ({
   type: actionTypes.deleteAnnouncement,
   id,
