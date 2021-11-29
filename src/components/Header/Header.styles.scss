@@ -1,0 +1,56 @@
+@import "../../../src/styles/variables";
+
+.header {
+  height: 55px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  background-color: $secondary;
+  color: white;
+
+  &__logotitle {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 auto;
+    padding: 0 $lateral-pading;
+  }
+
+  &__logo {
+    display: inline;
+    width: 25px;
+    height: 19px;
+    margin-top: 16px;
+  }
+
+  &__title {
+    display: inline;
+    width: 75px;
+    height: 19px;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+  }
+
+  &__list {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  &__item {
+    display: inline;
+    padding: 0 $lateral-pading;
+  }
+}
+
+button {
+  background-color: $button-color;
+  border-radius: $border-radius;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
