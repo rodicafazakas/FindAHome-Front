@@ -17,9 +17,9 @@ describe("Given a Header component", () => {
         </MemoryRouter>
       );
 
-      const logo = screen.getByRole("navigation");
+      const link = screen.getByText("Acceder");
 
-      expect(logo).toBeInTheDocument();
+      expect(link).toBeInTheDocument();
     });
   });
 });
