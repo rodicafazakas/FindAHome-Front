@@ -1,8 +1,8 @@
 import { useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
 import { loadAnnouncementsThunk } from "../redux/thunks/announcementThunk";
 
-const useAnnouncements = () => {
+const useAnnouncement = () => {
   const announcements = useSelector((store) => store.announcements);
   const dispatch = useDispatch();
 
@@ -16,4 +16,4 @@ const useAnnouncements = () => {
   };
 };
 
-export default useAnnouncements;
+export default useAnnouncement;

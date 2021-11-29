@@ -1,16 +1,27 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import useAnnouncement from "../../hooks/useAnnouncement";
 import "./Home.styles.scss";
 
 const Home = () => {
+  const { announcements, loadAnnouncements } = useAnnouncement();
+
+  useEffect(() => {
+    loadAnnouncements();
+  }, [loadAnnouncements]);
+
   const [searchInput, setSearchInput] = useState();
 
   const handleChange = (event) => {
     setSearchInput(event.target.value);
   };
 
-  const search = () => {};
+  const [list, setList] = useState(announcements);
+
+  const search = () => {
+    setList(list.filter((announcement) => (announcement.city = searchInput)));
+  };
 
   const onSubmit = (event) => {
     event.preventDefault();

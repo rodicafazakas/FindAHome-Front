@@ -1,4 +1,4 @@
-import AnnouncementCard from "../../components/Card/AnnouncementCard";
+import AnnouncementCard from "../../components/AnnouncementCard/AnnouncementCard";
 
 const Detail = () => {
   return (
