@@ -4,14 +4,14 @@ import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { faMap } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import useAnnouncement from "../../hooks/useAnnouncement";
+import useAnnouncements from "../../hooks/useAnnouncements";
 import AnnouncementCard from "../../components/AnnouncementCard/AnnouncementCard";
 import { useNavigate } from "react-router";
 
 const Listing = () => {
   const city = location.search.split("=")[1];
 
-  const { announcements, loadAnnouncements } = useAnnouncement();
+  const { announcements, loadAnnouncements } = useAnnouncements();
 
   useEffect(() => {
     loadAnnouncements(city);
@@ -19,7 +19,7 @@ const Listing = () => {
 
   const navigate = useNavigate();
   const goToDetail = (id) => {
-    navigate(`/announcements/:${id}`);
+    navigate(`/announcements/${id}`);
   };
 
   const addToFav = (event) => {};
