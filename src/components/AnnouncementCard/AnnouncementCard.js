@@ -1,9 +1,9 @@
 import { faHeart, faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const AnnouncementCard = ({ announcement }) => {
+const AnnouncementCard = ({ announcement, actionOnClick, addToFav }) => {
   return (
-    <li className="card">
+    <li className="card" onClick={actionOnClick}>
       <div className="card__image">
         <img
           src={announcement.images}
@@ -25,7 +25,10 @@ const AnnouncementCard = ({ announcement }) => {
       <div className="card__contact">
         <FontAwesomeIcon icon={faPhoneAlt} />
         <span> LLamar </span>
-        <FontAwesomeIcon icon={faHeart} />
+        <FontAwesomeIcon
+          icon={faHeart}
+          actionOnClick={(event) => addToFav(announcement, event)}
+        />
       </div>
     </li>
   );

@@ -3,14 +3,17 @@
 .card {
   background-color: white;
   border-radius: 5px;
+  border: 1px solid black;
   display: none;
   width: 290px;
   height: 180px;
-  margin-top: 10px;
+  margin: 10px 0 10px 0;
+  display: block;
 
   &__image {
     height: 125px;
-    width: 100%;
+    width: 290px;
+    border-radius: 5px;
   }
 
   &__info {
