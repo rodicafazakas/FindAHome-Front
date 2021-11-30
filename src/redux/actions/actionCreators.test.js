@@ -1,4 +1,7 @@
-import { loadAnnouncementsAction } from "./actionCreators";
+import {
+  deleteAnnouncementAction,
+  loadAnnouncementsAction,
+} from "./actionCreators";
 import actionTypes from "./actionTypes";
 
 describe("Given a load action creator", () => {
@@ -68,6 +71,22 @@ describe("Given a load action creator", () => {
       const resultAction = loadAnnouncementsAction(announcementsList);
 
       expect(resultAction).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a delete action creator", () => {
+  describe("When it receives an id", () => {
+    test("Then it should return a delete type action for the id received", () => {
+      const id = 2;
+      const expectedAction = {
+        type: actionTypes.deleteAnnouncement,
+        id,
+      };
+
+      const resultAction = deleteAnnouncementAction(id);
+
+      expect(expectedAction).toEqual(resultAction);
     });
   });
 });
