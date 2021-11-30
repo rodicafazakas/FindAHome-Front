@@ -1,9 +1,9 @@
 import { faHeart, faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const AnnouncementCard = ({ announcement, actionOnClick, addToFav }) => {
+const AnnouncementCard = ({ announcement, actiononclick, addToFav }) => {
   return (
-    <li className="card" onClick={actionOnClick}>
+    <li className="card" onClick={actiononclick}>
       <div className="card__image">
         <img
           src={announcement.images}

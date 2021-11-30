@@ -1,7 +1,18 @@
+import { useNavigate } from "react-router";
+
 const Profile = () => {
+  const navigate = useNavigate();
   return (
     <div className="profile">
-      <p>Buyer/Seller's Profile </p>
+      <button
+        type="text"
+        className="addButton"
+        actiononclick={() => navigate("/form")}
+      >
+        Anade un anuncio
+      </button>
+
+      <p> Listado de anuncios o favoritos </p>
     </div>
   );
 };
