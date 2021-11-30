@@ -1,6 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import AnnouncementCard from "./AnnouncementCard";
 
+jest.mock("@fortawesome/react-fontawesome", () => ({
+  FontAwesomeIcon: () => {
+    return <svg />;
+  },
+}));
+
 describe("Given an AnnouncementCard component", () => {
   describe("When it receives an announcement", () => {
     test("Then it should render a card", () => {
