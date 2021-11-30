@@ -14,7 +14,7 @@ const Header = () => {
         </li>
         <li className="header__title">
           {" "}
-          <h1> FindAHome </h1>{" "}
+          <h2> FindAHome </h2>{" "}
         </li>
       </ul>
 
