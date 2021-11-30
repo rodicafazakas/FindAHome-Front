@@ -3,7 +3,6 @@ import "./Header.styles.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
-import Listing from "../../pages/Listing/Listing";
 
 const Header = () => {
   return (
@@ -24,11 +23,6 @@ const Header = () => {
           <Link to="login">
             {" "}
             <button> Acceder </button>{" "}
-          </Link>
-        </li>
-        <li className="header__item">
-          <Link to="announcements">
-            <Listing />
           </Link>
         </li>
       </ul>
