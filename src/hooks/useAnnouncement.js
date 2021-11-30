@@ -1,14 +1,17 @@
 import { useCallback } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import { loadAnnouncementsThunk } from "../redux/thunks/announcementThunk";
 
 const useAnnouncement = () => {
   const announcements = useSelector((store) => store.announcements);
   const dispatch = useDispatch();
 
-  const loadAnnouncements = useCallback(() => {
-    dispatch(loadAnnouncementsThunk);
-  }, [dispatch]);
+  const loadAnnouncements = useCallback(
+    (city) => {
+      dispatch(loadAnnouncementsThunk(city));
+    },
+    [dispatch]
+  );
 
   return {
     announcements,

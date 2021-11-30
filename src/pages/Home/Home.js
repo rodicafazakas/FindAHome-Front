@@ -1,31 +1,20 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useEffect } from "react";
-import useAnnouncement from "../../hooks/useAnnouncement";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 import "./Home.styles.scss";
 
 const Home = () => {
-  const { announcements, loadAnnouncements } = useAnnouncement();
-
-  useEffect(() => {
-    loadAnnouncements();
-  }, [loadAnnouncements]);
-
-  const [searchInput, setSearchInput] = useState();
+  const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setSearchInput(event.target.value);
   };
 
-  const [list, setList] = useState(announcements);
-
-  const search = () => {
-    setList(list.filter((announcement) => (announcement.city = searchInput)));
-  };
-
   const onSubmit = (event) => {
     event.preventDefault();
-    search();
+    navigate(`announcements?city=${searchInput}`);
   };
 
   return (
@@ -45,8 +34,8 @@ const Home = () => {
             onChange={handleChange}
             placeholder="Search in Barcelona or Madrid"
           />
-          <div className="search-box_button" onClick={search}>
-            <button>
+          <div className="search-box_button">
+            <button type="submit">
               <FontAwesomeIcon icon={faSearch} />
               Buscar
             </button>
