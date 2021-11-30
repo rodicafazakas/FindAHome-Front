@@ -1,4 +1,6 @@
 const SignUp = () => {
+
+  
   return (
     <div className="register">
       <p>Registration</p>

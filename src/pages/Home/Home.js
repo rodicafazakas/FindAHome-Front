@@ -12,7 +12,7 @@ const Home = () => {
     setSearchInput(event.target.value);
   };
 
-  const onSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     navigate(`announcements?city=${searchInput}`);
   };
@@ -22,24 +22,27 @@ const Home = () => {
       <div className="homepage__image">
         <h3> Bienvenid@ a FindAHome! </h3>
       </div>
-      <form className="search" onSubmit={onSubmit}>
+      <form className="search" onSubmit={handleSubmit}>
         <div className="search-text">
           <p> Encuentra tu casa aqui </p>
         </div>
         <div className="search-box">
+          <label htmlFor="searchcity" className="visuallyhidden">
+            {" "}
+          </label>
           <input
             className="search-box__input"
             type="text"
+            id="searchcity"
             value={searchInput}
             onChange={handleChange}
             placeholder="Search in Barcelona or Madrid"
           />
-          <div className="search-box_button">
-            <button type="submit">
-              <FontAwesomeIcon icon={faSearch} />
-              Buscar
-            </button>
-          </div>
+
+          <button type="submit" className="search-box_button" id="searchbutton">
+            <FontAwesomeIcon icon={faSearch} />
+            Buscar
+          </button>
         </div>
       </form>
     </div>

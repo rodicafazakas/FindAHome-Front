@@ -25,22 +25,28 @@ h3 {
   .search-text {
     font-weight: bold;
     text-align: center;
+    margin: 0 auto;
   }
 
   .search-box {
     background-color: $primary;
-    height: 70%;
+    height: 60%;
+    margin: 10px auto 10px auto;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 
     &__input {
       width: 230px;
       height: 30px;
+      padding: 10px;
     }
 
     &__button {
       width: 230px;
       height: 30px;
+      padding: 10px;
     }
   }
 }
