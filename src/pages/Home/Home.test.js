@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import Home from "./Home";
-import { BrowserRouter as Router } from "react-router-dom";
 
 jest.mock("@fortawesome/react-fontawesome", () => ({
   FontAwesomeIcon: () => {
@@ -13,6 +13,7 @@ describe("Given a Home component", () => {
   describe("When it renders", () => {
     test("Then it should display an search input", () => {
       render(
+        
         <Router>
           <Home />
         </Router>
