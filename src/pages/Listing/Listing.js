@@ -42,7 +42,7 @@ const Listing = () => {
               <AnnouncementCard
                 key={announcement.id}
                 announcement={announcement}
-                actionOnClick={() => {
+                actiononclick={() => {
                   goToDetail(announcement.id);
                 }}
                 addToFav={addToFav}
