@@ -1,24 +1,29 @@
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const AnnouncementCard = () => {
+const AnnouncementCard = ({ announcement }) => {
   return (
     <li className="card">
       <div className="card__image">
         <img
-          src="https://www.storia.ro/ro/oferta/apartament-suprafata-generoasa-sanpetru-residence-IDnCjW.html#41243ee27f"
+          src={announcement.images}
           alt="apartment"
           weight="290"
           height="125"
         />
       </div>
       <div className="card__info">
-        <span> Piso en Sants-Montjuic </span>
-        <span> 3 hab. </span>
-        <span> 100 m2 </span>
-        <p className="card__price"> 350000 € </p>
+        <div className="card__info1">
+          <span> Piso en {announcement.neighbourhood} </span>
+          <p className="card__price"> {announcement.price} € </p>
+        </div>
+        <div className="card__info2">
+          <span> {announcement.bedrooms} hab. </span>
+          <span> {announcement.area} m2 </span>
+        </div>
       </div>
       <div className="card__contact">
+        <FontAwesomeIcon icon={faPhoneAlt} />
         <span> LLamar </span>
         <FontAwesomeIcon icon={faHeart} />
       </div>

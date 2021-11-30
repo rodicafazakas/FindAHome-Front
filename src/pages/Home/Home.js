@@ -14,7 +14,7 @@ const Home = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate(`announcements?city=${searchInput}`);
+    navigate(`/announcements?city=${searchInput}`);
   };
 
   return (

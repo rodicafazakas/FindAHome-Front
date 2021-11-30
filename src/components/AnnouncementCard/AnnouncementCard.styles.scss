@@ -1,0 +1,35 @@
+@import "../../../src/styles/variables";
+
+.card {
+  background-color: white;
+  border-radius: 5px;
+  display: none;
+  width: 290px;
+  height: 180px;
+  margin-top: 10px;
+
+  &__image {
+    height: 125px;
+    width: 100%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__info1 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info2 {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__contact {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
