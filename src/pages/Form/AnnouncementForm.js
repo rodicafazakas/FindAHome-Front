@@ -22,7 +22,14 @@ const AnnouncementForm = () => {
       <form noValidate onSubmit={onSubmit}>
         <div className="form-group">
           <label> Anade fotos a tu anuncio </label>
-          <input type="text" className="form-control" onChange={handleChange} />
+          <input
+            type="file"
+            name="filefield"
+            multiple="multiple"
+            className="form-control"
+            onChange={handleChange}
+            placeholder="Apload hasta 3 fotos"
+          />
         </div>
         <div className="form-group">
           <label> Tipo de vivienda </label>
@@ -116,7 +123,7 @@ const AnnouncementForm = () => {
             placeholder="Aparcamiento"
           />
         </div>
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" className="btn btn-primary">
           Anade anuncio
         </button>
       </form>

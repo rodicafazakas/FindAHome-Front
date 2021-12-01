@@ -7,6 +7,12 @@ const announcementReducer = (announcement = {}, action) => {
     case actionTypes.loadAnnouncement:
       newAnnouncement = { ...action.announcement };
       break;
+    case actionTypes.addFavourite:
+      newAnnouncement = { ...action.id };
+      break;
+    case actionTypes.deleteFavourite:
+      newAnnouncement = { ...action.id };
+      break;
     default:
       newAnnouncement = { ...announcement };
   }

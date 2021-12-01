@@ -22,29 +22,35 @@ const Home = () => {
       <div className="homepage__image">
         <h3 className="bienvenida"> Bienvenid@ a FindAHome! </h3>
       </div>
-      <form className="search" onSubmit={handleSubmit}>
-        <div className="search-text">
-          <p> Encuentra tu casa aqui </p>
-        </div>
-        <div className="search-box">
-          <label htmlFor="searchcity" className="visuallyhidden">
-            {" "}
-          </label>
-          <input
-            className="search-box__input"
-            type="text"
-            id="searchcity"
-            value={searchInput}
-            onChange={handleChange}
-            placeholder="Search in Barcelona or Madrid"
-          />
+      <div className="homepage__search">
+        <form className="search" onSubmit={handleSubmit}>
+          <div className="search-text">
+            <p> Encuentra tu casa aqui </p>
+          </div>
+          <div className="search-box">
+            <label htmlFor="searchcity" className="visuallyhidden">
+              {" "}
+            </label>
+            <input
+              className="search-box__input"
+              type="text"
+              id="searchcity"
+              value={searchInput}
+              onChange={handleChange}
+              placeholder="Search in Barcelona or Madrid"
+            />
 
-          <button type="submit" className="search-box_button" id="searchbutton">
-            <FontAwesomeIcon icon={faSearch} />
-            Buscar
-          </button>
-        </div>
-      </form>
+            <button
+              type="submit"
+              className="search-box_button"
+              id="searchbutton"
+            >
+              <FontAwesomeIcon icon={faSearch} />
+              Buscar
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

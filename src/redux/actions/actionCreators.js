@@ -34,3 +34,15 @@ export const registerUserAction = (user) => ({
   type: actionTypes.registerUser,
   user,
 });
+
+export const addFavouriteAction = (userId, announcementId) => ({
+  type: actionTypes.addFavourite,
+  userId,
+  announcementId,
+});
+
+export const deleteFavouriteAction = (userId, announcementId) => ({
+  type: actionTypes.deleteFavourite,
+  userId,
+  announcementId,
+});
