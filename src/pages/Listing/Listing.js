@@ -1,7 +1,6 @@
 /* eslint-disable no-restricted-globals */
 import { useEffect } from "react";
-import { faFilter } from "@fortawesome/free-solid-svg-icons";
-import { faMap } from "@fortawesome/free-solid-svg-icons";
+import { faFilter, faMap } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import useAnnouncements from "../../hooks/useAnnouncements";
@@ -26,7 +25,7 @@ const Listing = () => {
 
   return (
     <div className="directory">
-      <div className="filters">
+      <div className="filters d-flex flex-row">
         <div>
           <FontAwesomeIcon icon={faFilter} />
           <span>Filter</span>
@@ -36,7 +35,7 @@ const Listing = () => {
           <span>Mapa</span>
         </div>
       </div>
-      <ul className="announcements-list">
+      <ul className="announcements-list d-flex flex-column">
         {announcements && announcements.length
           ? announcements.map((announcement) => (
               <AnnouncementCard

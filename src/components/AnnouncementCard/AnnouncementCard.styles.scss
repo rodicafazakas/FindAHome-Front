@@ -4,10 +4,8 @@
   background-color: white;
   border-radius: 5px;
   border: 1px solid black;
-  display: none;
   width: 290px;
   height: 180px;
-  margin: 10px 0 10px 0;
   display: block;
 
   &__image {
@@ -22,7 +20,6 @@
   }
 
   &__info1 {
-    display: flex;
     justify-content: space-between;
   }
 
