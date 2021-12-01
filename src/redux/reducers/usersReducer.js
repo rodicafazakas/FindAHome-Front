@@ -1,9 +1,12 @@
 import actionTypes from "../actions/actionTypes";
 
-const usersReducer = (user={
-  isAuthenticated: false,
-  user: {},
-}, action) => {
+const usersReducer = (
+  user = {
+    isAuthenticated: false,
+    user: {},
+  },
+  action
+) => {
   let newUser;
 
   switch (action.type) {
@@ -11,14 +14,14 @@ const usersReducer = (user={
       newUser = {
         isAuthenticated: false,
         user: action.user,
-      }
+      };
       break;
     case actionTypes.loginUser:
       newUser = {
-        isAuthenticated: false,
+        isAuthenticated: true,
         user: action.user,
       };
-    break;
+      break;
     default:
       newUser = user;
   }

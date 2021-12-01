@@ -8,17 +8,17 @@ const Header = () => {
   return (
     <nav className="header navbar d-flex flex-row justify-content-around">
       <ul className="header__logotitle navbar-nav mr-auto p-2 d-flex flex-row justify-content-start align-items-center">
-        <li className="header__logo nav-item p-2 align-items-center">
+        <li className="header__logo nav-item align-items-center">
           {" "}
           <FontAwesomeIcon icon={faHome} />{" "}
         </li>
-        <li className="header__title nav-item p-2 align-items-center">
+        <li className="header__title nav-item align-items-center">
           {" "}
           <h2> FindAHome </h2>{" "}
         </li>
       </ul>
 
-      <ul className="header__list p-2 d-flex align-items-center">
+      <ul className="header__list d-flex align-items-center">
         <li className="header__item">
           <Link to="login">
             {" "}

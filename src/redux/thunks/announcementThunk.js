@@ -4,6 +4,8 @@ import {
   createAnnouncementAction,
   deleteAnnouncementAction,
   updateAnnouncementAction,
+  addFavouriteAction,
+  deleteFavouriteAction,
 } from "../actions/actionCreators";
 
 const apiUrl = "https://proyecto-final-rodica-back.herokuapp.com";
@@ -70,3 +72,42 @@ export const updateAnnouncementThunk = (announcement) => async (dispatch) => {
   announcement = await response.json();
   dispatch(updateAnnouncementAction(announcement));
 };
+
+export const addFavouriteThunk =
+  (userId, announcementId) => async (dispatch) => {
+    const { token } = JSON.parse(
+      localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
+    );
+    const response = await fetch(
+      `${apiUrl}/users/${userId}/announcements/${announcementId}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    const favourite = await response.json();
+    dispatch(addFavouriteAction(favourite));
+  };
+
+export const deleteFavouriteThunk =
+  (userId, announcementId) => async (dispatch) => {
+    const { token } = JSON.parse(
+      localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
+    );
+
+    const response = await fetch(
+      `${apiUrl}/users/${userId}/announcements/${announcementId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer" + token,
+        },
+      }
+    );
+
+    if (response.ok) {
+      dispatch(deleteFavouriteAction(userId, announcementId));
+    }
+  };
