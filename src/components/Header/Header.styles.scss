@@ -8,26 +8,15 @@
   background-color: $secondary;
   color: white;
 
-  &__logotitle {
-    display: flex;
-    justify-content: flex-start;
-    margin: 0 auto;
-    padding: 0 $lateral-pading;
-  }
-
   &__logo {
-    display: inline;
     width: 25px;
     height: 19px;
-    margin-top: 16px;
   }
 
   &__title {
-    display: inline;
     width: 75px;
     height: 19px;
-    font-size: 10px;
-    color: white;
+    font-size: 3px;
   }
 
   &__list {

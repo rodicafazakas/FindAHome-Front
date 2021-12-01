@@ -24,7 +24,7 @@ const Listing = () => {
   const addToFav = (event) => {};
 
   return (
-    <div className="directory">
+    <div className="directory d-flex flex-column">
       <div className="filters d-flex flex-row">
         <div>
           <FontAwesomeIcon icon={faFilter} />
@@ -35,7 +35,7 @@ const Listing = () => {
           <span>Mapa</span>
         </div>
       </div>
-      <ul className="announcements-list d-flex flex-column">
+      <ul className="announcements-list d-flex flex-wrap flex-column">
         {announcements && announcements.length
           ? announcements.map((announcement) => (
               <AnnouncementCard
