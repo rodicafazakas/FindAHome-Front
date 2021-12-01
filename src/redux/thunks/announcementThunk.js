@@ -8,6 +8,8 @@ import {
   deleteFavouriteAction,
 } from "../actions/actionCreators";
 
+import FormData from "form-data";
+
 const apiUrl = "https://proyecto-final-rodica-back.herokuapp.com";
 
 export const loadAnnouncementsThunk = (searchInput) => async (dispatch) => {
@@ -26,12 +28,20 @@ export const createAnnouncementThunk = (announcement) => async (dispatch) => {
   const { token } = JSON.parse(
     localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
   );
+  
+  const announcementFormData = new FormData();
+  Object.entries(announcement)
+    .filter(([key, value]) => key !== "street" && key !== "floor")
+    .forEach(([key, value]) =>announcementFormData.append(key, value));  
+
+  announcementFormData.append("address[street]", announcement.street);
+  announcementFormData.append("address[floor]", announcement.floor);
+
   const response = await fetch(`${apiUrl}/announcements/new`, {
     method: "POST",
-    body: JSON.stringify(announcement),
+    body: announcementFormData,
     headers: {
-      "Content-type": "multipart/form-data",
-      Authorization: "Bearer " + token,
+      Authorization: "Bearer " + token
     },
   });
 

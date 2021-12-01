@@ -12,6 +12,13 @@ const AnnouncementForm = () => {
     });
   };
 
+  const handleAddImage = (event) => {
+    setAnnouncementData({
+      ...announcementData,
+      [event.target.id]: event.target.files[0],
+    });
+  };
+
   const onSubmit = (event) => {
     event.preventDefault();
     createAnnouncement(announcementData);
@@ -25,20 +32,27 @@ const AnnouncementForm = () => {
           <input
             type="file"
             name="filefield"
+            id="images"
             multiple="multiple"
             className="form-control"
-            onChange={handleChange}
+            onChange={handleAddImage}
             placeholder="Apload hasta 3 fotos"
           />
         </div>
         <div className="form-group">
           <label> Tipo de vivienda </label>
-          <input type="text" className="form-control" onChange={handleChange} />
+          <input
+            type="text"
+            className="form-control"
+            id="dwellingType"
+            onChange={handleChange}
+          />
         </div>
         <div className="form-group">
           <input
             type="text"
             className="form-control"
+            id="price"
             onChange={handleChange}
             placeholder="Precio de venta"
           />
@@ -47,6 +61,7 @@ const AnnouncementForm = () => {
           <input
             type="text"
             className="form-control"
+            id="city"
             onChange={handleChange}
             placeholder="Localidad"
           />
@@ -55,6 +70,7 @@ const AnnouncementForm = () => {
           <input
             type="text"
             className="form-control"
+            id="neighbourhood"
             onChange={handleChange}
             placeholder="Distrito"
           />
@@ -63,6 +79,7 @@ const AnnouncementForm = () => {
           <input
             type="text"
             className="form-control"
+            id="phoneNumber"
             onChange={handleChange}
             placeholder="Telefono de contacto"
           />
@@ -72,6 +89,7 @@ const AnnouncementForm = () => {
           <textarea
             type="text"
             className="form-control"
+            id="description"
             onChange={handleChange}
           />
         </div>
@@ -79,6 +97,7 @@ const AnnouncementForm = () => {
           <input
             type="text"
             className="form-control"
+            id="bedrooms"
             onChange={handleChange}
             placeholder="Habitaciones"
           />
@@ -87,6 +106,7 @@ const AnnouncementForm = () => {
           <input
             type="text"
             className="form-control"
+            id="bathrooms"
             onChange={handleChange}
             placeholder="Banos"
           />
@@ -95,6 +115,7 @@ const AnnouncementForm = () => {
           <input
             type="text"
             className="form-control"
+            id="area"
             onChange={handleChange}
             placeholder="Superficie"
           />
@@ -103,6 +124,7 @@ const AnnouncementForm = () => {
           <input
             type="text"
             className="form-control"
+            id="terrace"
             onChange={handleChange}
             placeholder="Terraza"
           />
@@ -111,6 +133,7 @@ const AnnouncementForm = () => {
           <input
             type="text"
             className="form-control"
+            id="elevator"
             onChange={handleChange}
             placeholder="Ascensor"
           />
@@ -119,8 +142,27 @@ const AnnouncementForm = () => {
           <input
             type="text"
             className="form-control"
+            id="parking"
             onChange={handleChange}
             placeholder="Aparcamiento"
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            className="form-control"
+            id="street"
+            onChange={handleChange}
+            placeholder="Street"
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            className="form-control"
+            id="floor"
+            onChange={handleChange}
+            placeholder="Floor"
           />
         </div>
         <button type="submit" className="btn btn-primary">
