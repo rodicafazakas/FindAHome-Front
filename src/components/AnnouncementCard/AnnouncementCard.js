@@ -28,7 +28,7 @@ const AnnouncementCard = ({ announcement, actiononclick, addToFav }) => {
         <div className="fav">
           <FontAwesomeIcon
             icon={faHeart}
-            onClick={(event) => addToFav(announcement.id, event)}
+            onClick={addToFav}
           />
         </div>
       </div>

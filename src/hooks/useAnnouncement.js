@@ -17,8 +17,8 @@ const useAnnouncement = () => {
   );
 
   const addFavourite = useCallback(
-    (userId, announcementId) => {
-      dispatch(addFavouriteThunk(userId, announcementId));
+    (announcementId) => {
+      dispatch(addFavouriteThunk("619ccdd9adede94481d5c2aa", announcementId));
     },
     [dispatch]
   );

@@ -89,7 +89,7 @@ export const addFavouriteThunk =
       localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
     );
     const response = await fetch(
-      `${apiUrl}/users/${userId}/announcements/${announcementId}`,
+      `${apiUrl}/users/${userId}/favourites/${announcementId}`,
       {
         method: "PUT",
         headers: {
