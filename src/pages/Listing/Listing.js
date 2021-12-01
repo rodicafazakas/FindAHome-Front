@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useAnnouncements from "../../hooks/useAnnouncements";
 import AnnouncementCard from "../../components/AnnouncementCard/AnnouncementCard";
 import { useNavigate } from "react-router";
-// import useAnnouncement from "../../hooks/useAnnouncement";
+import useAnnouncement from "../../hooks/useAnnouncement";
 
 const Listing = () => {
   const city = location.search.split("=")[1];
@@ -22,11 +22,12 @@ const Listing = () => {
     navigate(`/announcements/${id}`);
   };
 
-  // const { addFavourite } = useAnnouncement();
+  const { addFavourite } = useAnnouncement();
 
   const addToFav = (id, event) => {
-    // addFavourite(id);
-    // if (!event.currentTarget.classList.contains("fav")) {
+    event.stopPropagation();
+    addFavourite(id);
+    // if (event.target.classList.contains("fav")) {
     //   addFavourite(id);
     // }
   };
@@ -53,7 +54,7 @@ const Listing = () => {
                   actiononclick={() => {
                     goToDetail(announcement.id);
                   }}
-                  addToFav={addToFav(announcement.id)}
+                  addToFav={(event) => addToFav(announcement.id, event)}
                 />
               ))
             : "There is no data available from the Heroku API"}
