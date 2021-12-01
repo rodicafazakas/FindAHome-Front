@@ -1,10 +1,6 @@
 /* eslint-disable no-restricted-globals */
 import { useEffect } from "react";
-import {
-  faFilter,
-  faMap,
-  faMapMarkerAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faFilter, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import useAnnouncements from "../../hooks/useAnnouncements";
