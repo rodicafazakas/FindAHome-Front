@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <div className="homepage">
       <div className="homepage__image">
-        <h3> Bienvenid@ a FindAHome! </h3>
+        <h3 className="bienvenida"> Bienvenid@ a FindAHome! </h3>
       </div>
       <form className="search" onSubmit={handleSubmit}>
         <div className="search-text">

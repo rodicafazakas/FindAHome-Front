@@ -21,7 +21,7 @@ function App() {
           <Route path="/announcements/:id" element={<Detail />} />
           <Route path="/register" element={<SignUp />} />
           <Route path="/login" element={<SignIn />} />
-          <Route path="/form" element={<AnnouncementForm />} />
+          <Route path="/new" element={<AnnouncementForm />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </Router>

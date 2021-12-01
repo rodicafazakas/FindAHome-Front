@@ -1,6 +1,8 @@
 import { useState } from "react";
+import useAnnouncements from "../../hooks/useAnnouncements";
 
 const AnnouncementForm = () => {
+  const { createAnnouncement } = useAnnouncements();
   const [announcementData, setAnnouncementData] = useState({});
 
   const handleChange = (event) => {
@@ -12,6 +14,7 @@ const AnnouncementForm = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
+    createAnnouncement(announcementData);
   };
 
   return (
@@ -102,14 +105,6 @@ const AnnouncementForm = () => {
             type="text"
             className="form-control"
             onChange={handleChange}
-            placeholder="Terraza"
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            className="form-control"
-            onChange={handleChange}
             placeholder="Ascensor"
           />
         </div>
@@ -121,6 +116,9 @@ const AnnouncementForm = () => {
             placeholder="Aparcamiento"
           />
         </div>
+        <button type="submit" class="btn btn-primary">
+          Anade anuncio
+        </button>
       </form>
     </div>
   );

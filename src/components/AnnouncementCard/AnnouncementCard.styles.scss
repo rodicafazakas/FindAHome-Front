@@ -6,12 +6,12 @@
   border: 1px solid black;
   width: 290px;
   height: 180px;
-  display: block;
 
   &__image {
     height: 125px;
     width: 290px;
     border-radius: 5px;
+    background-size: cover;
   }
 
   &__info {
