@@ -3,20 +3,27 @@
 .header {
   height: 55px;
   width: 100vw;
-  display: flex;
-  justify-content: space-around;
   background-color: $secondary;
   color: white;
+
+  &__logotitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
 
   &__logo {
     width: 25px;
     height: 19px;
+    display: flex;
   }
 
   &__title {
     width: 75px;
     height: 19px;
-    font-size: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
   }
 
   &__list {
@@ -25,12 +32,10 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin: 0 auto;
   }
 
   &__item {
     display: inline;
-    padding: 0 $lateral-pading;
   }
 }
 

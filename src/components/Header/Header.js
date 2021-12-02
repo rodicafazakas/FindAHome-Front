@@ -6,15 +6,15 @@ import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   return (
-    <nav className="header navbar d-flex flex-row justify-content-around">
-      <ul className="header__logotitle navbar-nav mr-auto p-2 d-flex flex-row justify-content-start align-items-center">
-        <li className="header__logo nav-item align-items-center">
+    <nav className="header navbar container-fluid d-flex flex-row p-1 justify-content-around">
+      <ul className="header__logotitle d-flex flex-row">
+        <li className="header__logo d-flex nav-item">
           {" "}
           <FontAwesomeIcon icon={faHome} />{" "}
         </li>
-        <li className="header__title nav-item align-items-center">
+        <li className="header__title d-flex nav-item">
           {" "}
-          <h2> FindAHome </h2>{" "}
+          <p> FindAHome </p>{" "}
         </li>
       </ul>
 

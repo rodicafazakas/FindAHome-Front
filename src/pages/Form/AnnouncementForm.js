@@ -122,7 +122,7 @@ const AnnouncementForm = () => {
         </div>
         <div className="form-group">
           <input
-            type="text"
+            type="checkbox"
             className="form-control"
             id="terrace"
             onChange={handleChange}
@@ -131,7 +131,7 @@ const AnnouncementForm = () => {
         </div>
         <div className="form-group">
           <input
-            type="text"
+            type="checkbox"
             className="form-control"
             id="elevator"
             onChange={handleChange}
@@ -140,7 +140,7 @@ const AnnouncementForm = () => {
         </div>
         <div className="form-group">
           <input
-            type="text"
+            type="checkbox"
             className="form-control"
             id="parking"
             onChange={handleChange}

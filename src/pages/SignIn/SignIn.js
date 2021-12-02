@@ -23,25 +23,30 @@ const SignIn = () => {
 
   return (
     <div className="login">
-      <h2> Accede a tu cuenta </h2>
-      <form className="login-form" onSubmit={onSubmit}>
-        <input
-          className="username"
-          type="text"
-          id="username"
-          onChange={handleChange}
-          placeholder="Username"
-        />
-        <input
-          className="password"
-          type="password"
-          id="password"
-          onChange={handleChange}
-          placeholder="Password"
-        />
-        <button type="submit"> Iniciar Session </button>
-      </form>
-      <p> No tengo cuenta y quiero registrarme </p>
+      <div class="container h-100">
+        <div class="row h-100">
+          <h2> Accede a tu cuenta </h2>
+          <form className="login-form form-group" onSubmit={onSubmit}>
+            <input
+              className="username form-control"
+              type="text"
+              id="username"
+              onChange={handleChange}
+              placeholder="Username"
+            />
+            <input
+              className="password form-control"
+              type="password"
+              id="password"
+              onChange={handleChange}
+              placeholder="Password"
+            />
+            <button type="submit"> Iniciar Session </button>
+          </form>
+          <p> No tengo cuenta y quiero registrarme </p>
+          <a href="/register"> Registrar </a>
+        </div>
+      </div>
     </div>
   );
 };

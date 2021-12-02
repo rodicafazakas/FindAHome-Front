@@ -7,6 +7,7 @@ import useAnnouncements from "../../hooks/useAnnouncements";
 import AnnouncementCard from "../../components/AnnouncementCard/AnnouncementCard";
 import { useNavigate } from "react-router";
 import useAnnouncement from "../../hooks/useAnnouncement";
+import "./Listing.styles.scss";
 
 const Listing = () => {
   const city = location.search.split("=")[1];
@@ -30,9 +31,9 @@ const Listing = () => {
   };
 
   return (
-    <div className="directory d-flex flex-column">
-      <div className="filters d-flex flex-row">
-        <div>
+    <div className="directory container-fluid d-flex flex-column">
+      <div className="filters pt-3 pb-3 d-flex flex-row">
+        <div className="dropdown">
           <FontAwesomeIcon icon={faFilter} />
           <span>Filter</span>
         </div>
@@ -41,8 +42,9 @@ const Listing = () => {
           <span>Mapa</span>
         </div>
       </div>
+
       <div className="row">
-        <ul className="announcements-list my-auto card-group d-flex flex-wrap flex-column">
+        <ul className="announcements-list">
           {announcements && announcements.length
             ? announcements.map((announcement) => (
                 <AnnouncementCard
