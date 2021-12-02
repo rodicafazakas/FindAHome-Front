@@ -23,10 +23,14 @@ const SignUp = () => {
 
   return (
     <div className="register">
-      <div class="container h-100">
-        <div class="row h-100">
+      <div className="container ">
+        <div className="row text-center align-items-center">
           <h2> Crea tu cuenta </h2>
-          <form className="register-form form-group" onSubmit={onSubmit}>
+          <form
+            className="register-form form-group"
+            autoComplete="off"
+            onSubmit={onSubmit}
+          >
             <input
               className="name form-control"
               type="text"

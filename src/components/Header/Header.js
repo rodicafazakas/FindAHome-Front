@@ -4,7 +4,17 @@ import "./Header.styles.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 
+import jwtDecode from "jwt-decode";
+
 const Header = () => {
+  let loggedInUser;
+  if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
+    const { token } = JSON.parse(
+      localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
+    );
+    loggedInUser = jwtDecode(token);
+  }
+
   return (
     <nav className="header navbar container-fluid d-flex flex-row p-1 justify-content-around">
       <ul className="header__logotitle d-flex flex-row">
@@ -19,10 +29,22 @@ const Header = () => {
       </ul>
 
       <ul className="header__list d-flex align-items-center">
+        {loggedInUser ? (
+          <li className="header__item">
+            <Link to="profile">
+              {" "}
+              <button> Mis favoritos </button>{" "}
+            </Link>
+          </li>
+        ) : (
+          ""
+        )}
         <li className="header__item">
           <Link to="login">
             {" "}
-            <button> Acceder </button>{" "}
+            <button>
+              {loggedInUser ? loggedInUser.username : "Acceder"}
+            </button>{" "}
           </Link>
         </li>
       </ul>
