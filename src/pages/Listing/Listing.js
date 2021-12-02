@@ -27,9 +27,6 @@ const Listing = () => {
   const addToFav = (id, event) => {
     event.stopPropagation();
     addFavourite(id);
-    // if (event.target.classList.contains("fav")) {
-    //   addFavourite(id);
-    // }
   };
 
   return (
