@@ -1,4 +1,8 @@
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
+import configureStore from "../../redux/store/store";
+
 import AnnouncementCard from "./AnnouncementCard";
 
 jest.mock("@fortawesome/react-fontawesome", () => ({
@@ -37,11 +41,20 @@ describe("Given an AnnouncementCard component", () => {
           },
         },
       };
+      let store = configureStore();
 
-      render(<AnnouncementCard announcement={newAnnouncement} />);
+      render(
+        <Provider store={store}>
+          <Router>
+            <AnnouncementCard announcement={newAnnouncement} />
+          </Router>
+        </Provider>
+      );
       const announcementCard = screen.getByRole("listitem");
+      const cardImage = screen.getByRole("img", { name: "apartment" });
 
       expect(announcementCard).toBeInTheDocument();
+      expect(cardImage).toHaveClass("card-image");
     });
   });
 });

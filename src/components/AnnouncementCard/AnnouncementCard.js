@@ -5,7 +5,7 @@ const AnnouncementCard = ({ announcement, actiononclick, addToFav }) => {
   return (
     <li className="card" onClick={actiononclick}>
       <div className="card__image card-img-top">
-        <img
+        <img className='card-image'
           src={announcement.images[0]}
           alt="apartment"
           width="290"
