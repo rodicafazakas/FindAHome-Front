@@ -28,11 +28,11 @@ export const createAnnouncementThunk = (announcement) => async (dispatch) => {
   const { token } = JSON.parse(
     localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
   );
-  
+
   const announcementFormData = new FormData();
   Object.entries(announcement)
     .filter(([key, value]) => key !== "street" && key !== "floor")
-    .forEach(([key, value]) =>announcementFormData.append(key, value));  
+    .forEach(([key, value]) => announcementFormData.append(key, value));
 
   announcementFormData.append("address[street]", announcement.street);
   announcementFormData.append("address[floor]", announcement.floor);
@@ -41,7 +41,7 @@ export const createAnnouncementThunk = (announcement) => async (dispatch) => {
     method: "POST",
     body: announcementFormData,
     headers: {
-      Authorization: "Bearer " + token
+      Authorization: "Bearer " + token,
     },
   });
 
@@ -61,7 +61,7 @@ export const deleteAnnouncementThunk = (id) => async (dispatch) => {
     },
   });
   if (response.ok) {
-    delete deleteAnnouncementAction(id);
+    dispatch(deleteAnnouncementAction(id));
   }
 };
 
