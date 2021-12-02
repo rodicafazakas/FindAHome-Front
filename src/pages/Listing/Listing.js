@@ -32,7 +32,7 @@ const Listing = () => {
 
   return (
     <div className="directory container-fluid d-flex flex-column">
-      <div className="filters pt-3 pb-3 d-flex flex-row">
+      <div className="filters pt-3 pb-3">
         <div className="dropdown">
           <FontAwesomeIcon icon={faFilter} />
           <span>Filter</span>
@@ -40,6 +40,15 @@ const Listing = () => {
         <div>
           <FontAwesomeIcon icon={faMapMarkerAlt} />
           <span>Mapa</span>
+        </div>
+      </div>
+
+      <div className="filters-large pt-3 pb-3">
+        <div className="form">
+          <span>Distrito</span>
+        </div>
+        <div>
+          <span>Precio</span>
         </div>
       </div>
 

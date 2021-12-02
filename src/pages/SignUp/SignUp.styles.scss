@@ -1,5 +1,14 @@
-.form {
+.register-form {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.register {
+  position: relative;
+}
+
+.container {
+  position: absolute;
+  top: 150px;
 }
