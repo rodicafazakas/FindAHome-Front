@@ -4,7 +4,7 @@ import "./AnnouncementCard.styles.scss";
 
 const AnnouncementCard = ({ announcement, actiononclick, addToFav }) => {
   return (
-    <li className="card col pt-3 pb-3" onClick={actiononclick}>
+    <li className="card col" onClick={actiononclick}>
       <div className="card__image card-img-top">
         <img
           className="card-image"

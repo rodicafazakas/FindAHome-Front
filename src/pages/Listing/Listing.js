@@ -44,7 +44,7 @@ const Listing = () => {
       </div>
 
       <div className="row">
-        <ul className="announcements-list card-group">
+        <ul className="announcements-list">
           {announcements && announcements.length
             ? announcements.map((announcement) => (
                 <AnnouncementCard
