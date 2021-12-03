@@ -1,7 +1,6 @@
 //Storage Mock
 export const storageMock = () => {
   let storage = {};
-  console.log(storage);
 
   return {
     setItem: (key, value) => {

@@ -1,18 +1,18 @@
 import { useNavigate } from "react-router";
-import jwtDecode from "jwt-decode";
+// import jwtDecode from "jwt-decode";
 // import { useEffect } from "react";
 
 // import useAnnouncements from "../../hooks/useAnnouncements";
 // import AnnouncementCard from "../../components/AnnouncementCard/AnnouncementCard";
 
 const Profile = () => {
-  let loggedInUser;
-  if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
-    const { token } = JSON.parse(
-      localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
-    );
-    loggedInUser = jwtDecode(token);
-  }
+  // let loggedInUser;
+  // if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
+  //   const { token } = JSON.parse(
+  //     localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
+  //   );
+  //   loggedInUser = jwtDecode(token);
+  // }
 
   // const { announcements, loadAnnouncements } = useAnnouncements();
 
