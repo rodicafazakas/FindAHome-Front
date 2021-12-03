@@ -36,7 +36,7 @@ const Detail = () => {
         </div>
         <div className="detail__price">
           {" "}
-          <button>{announcement.price} € </button>
+          <button> {announcement.price} € </button>
         </div>
         <div className="detail__description text-center align-self-center">
           <p> {announcement.description} </p>
