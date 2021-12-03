@@ -27,6 +27,7 @@ const SignIn = () => {
         <div className="row h-100">
           <h2> Accede a tu cuenta </h2>
           <form className="login-form form-group" onSubmit={onSubmit}>
+            <label htmlFor="username">Username:</label>
             <input
               className="username form-control"
               type="text"
