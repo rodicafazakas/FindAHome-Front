@@ -45,10 +45,16 @@ const Listing = () => {
 
       <div className="filters-large pt-3 pb-3">
         <div className="form">
-          <span>Distrito</span>
+          <span className="badge badge-primary">Distrito</span>
+        </div>
+        <div className="form">
+          <span className="badge badge-primary">Tipo de vivienda</span>
         </div>
         <div>
-          <span>Precio</span>
+          <span className="badge badge-primary">Precio</span>
+        </div>
+        <div>
+          <span className="badge badge-primary">Superficie</span>
         </div>
       </div>
 
