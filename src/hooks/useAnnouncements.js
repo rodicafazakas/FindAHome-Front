@@ -12,8 +12,8 @@ const useAnnouncements = () => {
   const dispatch = useDispatch();
 
   const loadAnnouncements = useCallback(
-    (city) => {
-      dispatch(loadAnnouncementsThunk(city));
+    (filters) => {
+      dispatch(loadAnnouncementsThunk(filters));
     },
     [dispatch]
   );

@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { faFilter, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -7,20 +7,27 @@ import useAnnouncements from "../../hooks/useAnnouncements";
 import AnnouncementCard from "../../components/AnnouncementCard/AnnouncementCard";
 import { useNavigate } from "react-router";
 import useAnnouncement from "../../hooks/useAnnouncement";
+
 import "./Listing.styles.scss";
 
 const Listing = () => {
-  const city = location.search.split("=")[1];
+  const urlSearchParams = useMemo(() => {
+    return new URLSearchParams(location.search);
+  },[])
 
   const { announcements, loadAnnouncements } = useAnnouncements();
 
   useEffect(() => {
-    loadAnnouncements(city);
-  }, [loadAnnouncements, city]);
+    loadAnnouncements(urlSearchParams.toString());
+  }, [loadAnnouncements, urlSearchParams]);
 
   const navigate = useNavigate();
   const goToDetail = (id) => {
     navigate(`/announcements/${id}`);
+  };
+
+  const seeFilters = (city) => {
+    navigate(`/announcements/${city}/filters`);
   };
 
   const { addFavourite } = useAnnouncement();
@@ -32,9 +39,14 @@ const Listing = () => {
 
   return (
     <div className="directory container-fluid d-flex flex-column">
-      <div className="filters pt-3 pb-3">
+      <div className="filters-icons pt-3 pb-3">
         <div className="dropdown">
-          <FontAwesomeIcon icon={faFilter} />
+          <FontAwesomeIcon
+            icon={faFilter}
+            onClick={() => {
+              seeFilters(urlSearchParams.get("city"));
+            }}
+          />
           <span>Filter</span>
         </div>
         <div>
@@ -43,23 +55,8 @@ const Listing = () => {
         </div>
       </div>
 
-      <div className="filters-large pt-3 pb-3">
-        <div className="form">
-          <span className="badge badge-primary">Distrito</span>
-        </div>
-        <div className="form">
-          <span className="badge badge-primary">Tipo de vivienda</span>
-        </div>
-        <div>
-          <span className="badge badge-primary">Precio</span>
-        </div>
-        <div>
-          <span className="badge badge-primary">Superficie</span>
-        </div>
-      </div>
-
       <div className="row">
-        <ul className="announcements-list">
+        <ul className="announcements-list col">
           {announcements && announcements.length
             ? announcements.map((announcement) => (
                 <AnnouncementCard

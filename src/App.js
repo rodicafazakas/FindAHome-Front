@@ -9,6 +9,7 @@ import Header from "./components/Header/Header";
 import Detail from "./pages/Detail/Detail";
 import AnnouncementForm from "./pages/Form/AnnouncementForm";
 import Profile from "./pages/Profile/Profile";
+import FiltersList from "./components/FiltersList/FiltersList";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/announcements" element={<Listing />} />
+          <Route path="announcements/:city/filters" element={<FiltersList />} />
           <Route path="/announcements/:id" element={<Detail />} />
           <Route path="/register" element={<SignUp />} />
           <Route path="/login" element={<SignIn />} />
