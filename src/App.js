@@ -8,8 +8,9 @@ import Listing from "./pages/Listing/Listing";
 import Header from "./components/Header/Header";
 import Detail from "./pages/Detail/Detail";
 import AnnouncementForm from "./pages/Form/AnnouncementForm";
-import Profile from "./pages/Profile/Profile";
 import FiltersList from "./components/FiltersList/FiltersList";
+import MyFavourites from "./pages/MyFavourites/MyFavourites";
+import MyAdverts from "./pages/MyAdverts/MyAdverts";
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
           <Route path="/register" element={<SignUp />} />
           <Route path="/login" element={<SignIn />} />
           <Route path="/announcements/new" element={<AnnouncementForm />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/myfavourites" element={<MyFavourites />} />
+          <Route path="/myadverts" element={<MyAdverts />} />
         </Routes>
       </Router>
     </div>
