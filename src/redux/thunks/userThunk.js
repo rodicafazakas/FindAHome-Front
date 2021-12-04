@@ -1,5 +1,9 @@
 import jwtDecode from "jwt-decode";
-import { loginUserAction, registerUserAction } from "../actions/actionCreators";
+import {
+  loadUserAction,
+  loginUserAction,
+  registerUserAction,
+} from "../actions/actionCreators";
 
 const apiUrl = "https://proyecto-final-rodica-back.herokuapp.com";
 
@@ -38,4 +42,17 @@ export const registerUserThunk = (user) => async (dispatch) => {
   if (response.status === 201) {
     dispatch(registerUserAction(newUser));
   }
+};
+
+export const loadUserThunk = (userId) => async (dispatch) => {
+  const { token } = JSON.parse(
+    localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
+  );
+  const response = await fetch(`${apiUrl}/users/${userId}`, {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
+  const user = await response.json();
+  dispatch(loadUserAction(user));
 };

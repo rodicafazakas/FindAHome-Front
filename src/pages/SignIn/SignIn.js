@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import useUser from "../../hooks/useUser";
+import { useEffect } from "react";
 
 const SignIn = () => {
   const [userData, setUserData] = useState();
   const navigate = useNavigate();
 
-  const { loginUser } = useUser();
+  const { user, loginUser } = useUser();
 
   const handleChange = (event) => {
     setUserData({
@@ -15,10 +16,15 @@ const SignIn = () => {
     });
   };
 
+  useEffect(() => {
+    if (user.isAuthenticated) {
+      navigate("/");
+    }
+  }, [navigate, user]);
+
   const onSubmit = (event) => {
     event.preventDefault();
     loginUser(userData);
-    navigate("/profile");
   };
 
   return (

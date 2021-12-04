@@ -33,7 +33,12 @@ const Header = () => {
           <li className="header__item">
             <Link to="profile">
               {" "}
-              <button> Mis favoritos </button>{" "}
+              <button>
+                {" "}
+                {loggedInUser.customerType === "buyer"
+                  ? "Mis favoritos"
+                  : "Mis anuncios"}{" "}
+              </button>{" "}
             </Link>
           </li>
         ) : (

@@ -35,6 +35,15 @@ export const registerUserAction = (user) => ({
   user,
 });
 
+export const loadUserAction = (user) => ({
+  type: actionTypes.loadUser,
+  user,
+});
+
+export const logoutUserAction = () => ({
+  type: actionTypes.logoutUser,
+});
+
 export const addFavouriteAction = (userId, announcementId) => ({
   type: actionTypes.addFavourite,
   userId,
