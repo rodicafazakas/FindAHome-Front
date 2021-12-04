@@ -12,8 +12,8 @@ import FormData from "form-data";
 
 const apiUrl = "https://proyecto-final-rodica-back.herokuapp.com";
 
-export const loadAnnouncementsThunk = (searchInput) => async (dispatch) => {
-  const response = await fetch(`${apiUrl}/announcements?city=${searchInput}`);
+export const loadAnnouncementsThunk = (filters) => async (dispatch) => {
+  const response = await fetch(`${apiUrl}/announcements?${filters}`);
   const announcements = await response.json();
   dispatch(loadAnnouncementsAction(announcements));
 };

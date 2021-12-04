@@ -7,7 +7,7 @@ const actionTypes = {
   loginUser: "LOGIN_USER",
   registerUser: "REGISTER_USER",
   addFavourite: "ADD_TO_FAVOURITE",
-  deleteFavourite: "DELETE_FROM_FAVOURITE",
+  addItem: "ADD_ITEM",
 };
 
 export default actionTypes;

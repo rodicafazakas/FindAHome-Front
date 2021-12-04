@@ -4,7 +4,6 @@ export const storageMock = () => {
 
   return {
     setItem: (key, value) => {
-      console.log(key, value);
       storage[key] = value || "";
     },
     getItem: (key) => {

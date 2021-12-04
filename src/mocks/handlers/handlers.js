@@ -70,7 +70,6 @@ export const handlers = [
     "https://proyecto-final-rodica-back.herokuapp.com/users/login",
     async (req, res, ctx) => {
       const { username, password } = req.body;
-      console.log(username, password);
       return res(
         ctx.json({
           token: "f79e82e8-c34a-4dc7-a49e-9fadc0979fda",

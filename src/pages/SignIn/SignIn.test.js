@@ -8,8 +8,6 @@ import SignIn from "./SignIn";
 import { server } from "../../mocks/server/server";
 import { storageMock } from "../../mocks/storage/storage";
 
-jest.mock("jwt-decode");
-
 beforeAll(() => {
   server.listen();
 });
