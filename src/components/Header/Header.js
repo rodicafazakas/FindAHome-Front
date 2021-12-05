@@ -30,26 +30,26 @@ const Header = () => {
 
       <ul className="header__list d-flex align-items-center">
         {loggedInUser ? (
-          <li className="header__item">
-            <Link to="profile">
-              {" "}
-              <button>
-                {" "}
-                {loggedInUser.customerType === "buyer"
-                  ? "Mis favoritos"
-                  : "Mis anuncios"}{" "}
-              </button>{" "}
-            </Link>
-          </li>
+          loggedInUser.customerType === "buyer" ? (
+            <li className="header__item">
+              <Link to="myfavourites">
+                <button> Mis favoritos </button>
+              </Link>
+            </li>
+          ) : (
+            <li className="header__item">
+              <Link to="myadverts">
+                <button> Mis anuncios </button>
+              </Link>
+            </li>
+          )
         ) : (
           ""
         )}
         <li className="header__item">
           <Link to="login">
             {" "}
-            <button>
-              {loggedInUser ? loggedInUser.username : "Acceder"}
-            </button>{" "}
+            <button>{loggedInUser ? "Salir" : "Acceder"}</button>{" "}
           </Link>
         </li>
       </ul>
