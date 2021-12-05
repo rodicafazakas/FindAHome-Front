@@ -1,9 +1,84 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router";
+import useAnnouncement from "../../hooks/useAnnouncement";
 import useAnnouncements from "../../hooks/useAnnouncements";
 
 const AnnouncementForm = () => {
-  const { createAnnouncement } = useAnnouncements();
-  const [announcementData, setAnnouncementData] = useState({});
+  const urlSearchParams = useMemo(() => {
+    // eslint-disable-next-line no-restricted-globals
+    return new URLSearchParams(location.search);
+  }, []);
+
+  const { announcement, loadAnnouncement } = useAnnouncement();
+
+  const { createAnnouncement, updateAnnouncement } = useAnnouncements();
+
+  useEffect(() => {
+    if (urlSearchParams.get("id")) {
+      loadAnnouncement(urlSearchParams.get("id"));    
+    } 
+  }, [loadAnnouncement, urlSearchParams]);
+
+  const initialAnnouncement = useMemo(() => {
+    return {
+      price: "",
+      images: "",
+      area: "",
+      bedrooms: "",
+      bathrooms: "",
+      description: "",
+      parking: "",
+      terrace: "",
+      elevator: "",
+      city: "",
+      neighbourhood: "",
+      dwellingType: "",
+      address: {
+        street: "",
+        floor: "",
+      },
+    };
+  }, []);
+
+  const [announcementData, setAnnouncementData] = useState(initialAnnouncement);
+  const [addressData, setAddressData] = useState(initialAnnouncement.address);
+  const [textButton, setTextButton] = useState("");
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+
+  useEffect(() => {
+    if (announcement && announcement.address) {
+      setAnnouncementData(announcement);
+      setAddressData(announcement.address);
+      setTextButton("Modificar anuncio");
+    } else {
+      // setAnnouncementData(initialAnnouncement);
+      // setAddressData(initialAnnouncementAddress);
+      // setAddressData(announcement.address);
+      setTextButton("Añadir anuncio");
+    }
+  }, [announcement]);
+
+  useEffect(() => {
+    if (announcementData && addressData) {
+      setButtonDisabled(
+        announcementData.price === "" ||
+          announcementData.images === "" ||
+          announcementData.area === "" ||
+          announcementData.bedrooms === "" ||
+          announcementData.bathrooms === "" ||
+          announcementData.description === "" ||
+          announcementData.parking === "" ||
+          announcementData.elevator === "" ||
+          announcementData.terrace === "" ||
+          announcementData.elevator === "" ||
+          announcementData.city === "" ||
+          announcementData.neighbourhood === "" ||
+          announcementData.dwellingType === "" ||
+          announcementData.address.street === "" ||
+          announcementData.address.floor === ""
+      );
+    }
+  }, [announcementData, addressData]);
 
   const handleChange = (event) => {
     setAnnouncementData({
@@ -19,18 +94,47 @@ const AnnouncementForm = () => {
     });
   };
 
+  const handleAddressChange = (event) => {
+    setAddressData({
+      ...addressData,
+      [event.target.id]: event.target.value,
+    });
+    setAnnouncementData({
+      ...announcementData,
+      address: { ...addressData },
+    });
+  };
+
+  const navigate = useNavigate();
   const onSubmit = (event) => {
     event.preventDefault();
-    createAnnouncement(announcementData);
+    if (announcement && announcement.id) {
+      updateAnnouncement({
+        ...announcementData,
+        id: announcement["id"],
+      });
+      navigate(-1);
+    } else {
+      setAnnouncementData({
+        ...announcementData,
+        // address: { ...addressData },
+      });
+      createAnnouncement(announcementData);
+      navigate(-1);
+    }
+
+    // setAnnouncementData(initialAnnouncement);
+    // setAddressData(initialAnnouncementAddress);
   };
 
   return (
     <div className="form">
-      <div className="container h-100">
-        <div className="row h-100">
-          <form noValidate onSubmit={onSubmit}>
+      <div className="container">
+        <h4>{announcement.id ? "Modificar anuncio" : "Crear anuncio"}</h4>
+        <div className="row">
+          <form autoComplete="off" noValidate onSubmit={onSubmit}>
             <div className="form-group">
-              <label> Anade fotos a tu anuncio </label>
+              <label htmlFor="images"> Añade fotos a tu anuncio </label>
               <input
                 type="file"
                 name="filefield"
@@ -38,16 +142,17 @@ const AnnouncementForm = () => {
                 multiple="multiple"
                 className="form-control"
                 onChange={handleAddImage}
-                placeholder="Apload hasta 3 fotos"
+                placeholder="Upload hasta 3 fotos"
               />
             </div>
             <div className="form-group">
-              <label> Tipo de vivienda </label>
               <input
                 type="text"
                 className="form-control"
                 id="dwellingType"
+                value={announcementData.dwellingType}
                 onChange={handleChange}
+                placeholder="Tipo de vivienda"
               />
             </div>
             <div className="form-group">
@@ -55,6 +160,7 @@ const AnnouncementForm = () => {
                 type="text"
                 className="form-control"
                 id="price"
+                value={announcementData.price}
                 onChange={handleChange}
                 placeholder="Precio de venta"
               />
@@ -64,6 +170,7 @@ const AnnouncementForm = () => {
                 type="text"
                 className="form-control"
                 id="city"
+                value={announcementData.city}
                 onChange={handleChange}
                 placeholder="Localidad"
               />
@@ -73,17 +180,9 @@ const AnnouncementForm = () => {
                 type="text"
                 className="form-control"
                 id="neighbourhood"
+                value={announcementData.neighbourhood}
                 onChange={handleChange}
                 placeholder="Distrito"
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                id="phoneNumber"
-                onChange={handleChange}
-                placeholder="Telefono de contacto"
               />
             </div>
             <div className="form-group">
@@ -92,6 +191,7 @@ const AnnouncementForm = () => {
                 type="text"
                 className="form-control"
                 id="description"
+                value={announcementData.description}
                 onChange={handleChange}
               />
             </div>
@@ -100,6 +200,7 @@ const AnnouncementForm = () => {
                 type="text"
                 className="form-control"
                 id="bedrooms"
+                value={announcementData.bedrooms}
                 onChange={handleChange}
                 placeholder="Habitaciones"
               />
@@ -109,6 +210,7 @@ const AnnouncementForm = () => {
                 type="text"
                 className="form-control"
                 id="bathrooms"
+                value={announcementData.bathrooms}
                 onChange={handleChange}
                 placeholder="Banos"
               />
@@ -118,33 +220,37 @@ const AnnouncementForm = () => {
                 type="text"
                 className="form-control"
                 id="area"
+                value={announcementData.area}
                 onChange={handleChange}
                 placeholder="Superficie"
               />
             </div>
             <div className="form-group">
               <input
-                type="checkbox"
+                type="text"
                 className="form-control"
                 id="terrace"
+                value={announcementData.terrace}
                 onChange={handleChange}
                 placeholder="Terraza"
               />
             </div>
             <div className="form-group">
               <input
-                type="checkbox"
+                type="text"
                 className="form-control"
                 id="elevator"
+                value={announcementData.elevator}
                 onChange={handleChange}
                 placeholder="Ascensor"
               />
             </div>
             <div className="form-group">
               <input
-                type="checkbox"
+                type="text"
                 className="form-control"
                 id="parking"
+                value={announcementData.parking}
                 onChange={handleChange}
                 placeholder="Aparcamiento"
               />
@@ -154,7 +260,8 @@ const AnnouncementForm = () => {
                 type="text"
                 className="form-control"
                 id="street"
-                onChange={handleChange}
+                value={announcementData.address.street}
+                onChange={handleAddressChange}
                 placeholder="Street"
               />
             </div>
@@ -163,12 +270,17 @@ const AnnouncementForm = () => {
                 type="text"
                 className="form-control"
                 id="floor"
-                onChange={handleChange}
+                value={announcementData.address.floor}
+                onChange={handleAddressChange}
                 placeholder="Floor"
               />
             </div>
-            <button type="submit" className="btn btn-primary">
-              Anade anuncio
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={buttonDisabled}
+            >
+              {textButton}
             </button>
           </form>
         </div>

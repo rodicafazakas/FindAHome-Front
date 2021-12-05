@@ -8,7 +8,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import jwtDecode from "jwt-decode";
 import "./AnnouncementCard.styles.scss";
 
-const AnnouncementCard = ({ announcement, actiononclick, addToFav }) => {
+const AnnouncementCard = ({
+  announcement,
+  actiononclick,
+  addToFav,
+  updateClick,
+}) => {
   let loggedInUser;
   if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
     const { token } = JSON.parse(
@@ -49,7 +54,7 @@ const AnnouncementCard = ({ announcement, actiononclick, addToFav }) => {
           </>
         ) : (
           <>
-            <FontAwesomeIcon icon={faEdit} />
+            <FontAwesomeIcon icon={faEdit} onClick={updateClick} />
             <div className="thrash">
               <FontAwesomeIcon icon={faTrash} />
             </div>

@@ -30,12 +30,18 @@ const MyAdverts = () => {
     <div className="myadverts">
       <h1> Mis anuncios </h1>
       <button type="text" className="addButton" onClick={actiononclick}>
-        Anade un anuncio
+        Añade un anuncio
       </button>
 
       {user.user.customerType && user.user.adverts
         ? user.user.adverts.map((advert) => (
-            <AnnouncementCard key={advert.id} announcement={advert} />
+            <AnnouncementCard
+              key={advert.id}
+              announcement={advert}
+              updateClick={() => {
+                navigate(`/announcements/new?id=${advert.id}`);
+              }}
+            />
           ))
         : "User data is loading"}
     </div>

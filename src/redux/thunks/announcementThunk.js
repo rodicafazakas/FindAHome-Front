@@ -31,11 +31,11 @@ export const createAnnouncementThunk = (announcement) => async (dispatch) => {
 
   const announcementFormData = new FormData();
   Object.entries(announcement)
-    .filter(([key, value]) => key !== "street" && key !== "floor")
+    .filter(([key, value]) => key !== "address")
     .forEach(([key, value]) => announcementFormData.append(key, value));
 
-  announcementFormData.append("address[street]", announcement.street);
-  announcementFormData.append("address[floor]", announcement.floor);
+  announcementFormData.append("address[street]", announcement.address.street);
+  announcementFormData.append("address[floor]", announcement.address.floor);
 
   const response = await fetch(`${apiUrl}/announcements/new`, {
     method: "POST",
@@ -56,7 +56,6 @@ export const deleteAnnouncementThunk = (id) => async (dispatch) => {
   const response = await fetch(`${apiUrl}/announcements/${id}`, {
     method: "DELETE",
     headers: {
-      "Content-Type": "multipart/form-data",
       Authorization: "Bearer " + token,
     },
   });
@@ -70,12 +69,20 @@ export const updateAnnouncementThunk = (announcement) => async (dispatch) => {
     localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
   );
 
+  // const announcementFormData = new FormData();
+  // Object.entries(announcement)
+  //   .filter(([key, value]) => key !== "street" && key !== "floor")
+  //   .forEach(([key, value]) => announcementFormData.append(key, value));
+
+  // announcementFormData.append("address[street]", announcement.street);
+  // announcementFormData.append("address[floor]", announcement.floor);
+
   const response = await fetch(`${apiUrl}/announcements/${announcement.id}`, {
     method: "PUT",
     body: JSON.stringify(announcement),
     headers: {
-      "Content-Type": "multipart/form-data",
       Authorization: "Bearer " + token,
+      "Content-Type": "application/json",
     },
   });
 
