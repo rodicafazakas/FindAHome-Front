@@ -1,8 +1,22 @@
-import { faHeart, faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEdit,
+  faHeart,
+  faPhoneAlt,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import jwtDecode from "jwt-decode";
 import "./AnnouncementCard.styles.scss";
 
 const AnnouncementCard = ({ announcement, actiononclick, addToFav }) => {
+  let loggedInUser;
+  if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
+    const { token } = JSON.parse(
+      localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
+    );
+    loggedInUser = jwtDecode(token);
+  }
+
   return (
     <li className="card col" onClick={actiononclick}>
       <div className="card__image card-img-top">
@@ -25,11 +39,22 @@ const AnnouncementCard = ({ announcement, actiononclick, addToFav }) => {
         </div>
       </div>
       <div className="card__contact d-flex justify-content-end">
-        <FontAwesomeIcon icon={faPhoneAlt} />
-        <span> LLamar </span>
-        <div className="fav">
-          <FontAwesomeIcon icon={faHeart} onClick={addToFav} />
-        </div>
+        {loggedInUser.customerType === "buyer" ? (
+          <>
+            <FontAwesomeIcon icon={faPhoneAlt} />
+            <span> LLamar </span>
+            <div className="fav">
+              <FontAwesomeIcon icon={faHeart} onClick={addToFav} />
+            </div>
+          </>
+        ) : (
+          <>
+            <FontAwesomeIcon icon={faEdit} />
+            <div className="thrash">
+              <FontAwesomeIcon icon={faTrash} />
+            </div>
+          </>
+        )}
       </div>
     </li>
   );
