@@ -45,7 +45,7 @@ const Detail = () => {
         <div className="detail__container">
           <div className="detail__item d-flex flex-row">
             <div className="icon ml-1">
-              <FontAwesomeIcon icon={faBed} />
+              <FontAwesomeIcon icon={faBed} color="#ef8b42" />
             </div>
             <div className="detail__info">
               <span> {announcement.bedrooms} </span>
@@ -55,7 +55,7 @@ const Detail = () => {
 
           <div className="detail__item d-flex flex-row">
             <div className="icon">
-              <FontAwesomeIcon icon={faChartArea} />
+              <FontAwesomeIcon icon={faChartArea} color="#ef8b42" />
             </div>
             <div className="detail__info">
               <span> {announcement.area} </span>
@@ -65,7 +65,7 @@ const Detail = () => {
 
           <div className="detail__item d-flex flex-row">
             <div className="icon">
-              <FontAwesomeIcon icon={faBath} />
+              <FontAwesomeIcon icon={faBath} color="#ef8b42" />
             </div>
             <div className="detail__info">
               <span> {announcement.bathrooms} </span>
@@ -75,7 +75,7 @@ const Detail = () => {
 
           <div className="detail__item d-flex flex-row">
             <div className="icon">
-              <FontAwesomeIcon icon={faTree} />
+              <FontAwesomeIcon icon={faTree} color="#ef8b42" />
             </div>
             <div className="detail__info">
               <span> {announcement.terrace} </span>
@@ -85,7 +85,7 @@ const Detail = () => {
 
           <div className="detail__item d-flex flex-row">
             <div className="icon">
-              <FontAwesomeIcon icon={faArrowsAltV} />
+              <FontAwesomeIcon icon={faArrowsAltV} color="#ef8b42" />
             </div>
             <div className="detail__info">
               <span> {announcement.elevator} </span>
@@ -95,7 +95,7 @@ const Detail = () => {
 
           <div className="detail__item d-flex flex-row">
             <div className="icon">
-              <FontAwesomeIcon icon={faParking} />
+              <FontAwesomeIcon icon={faParking} color="#ef8b42" />
             </div>
             <div className="detail__info">
               <span> {announcement.parking} </span>

@@ -19,12 +19,13 @@ const Header = () => {
     <nav className="header navbar container-fluid d-flex flex-row p-1 justify-content-around">
       <ul className="header__logotitle d-flex flex-row">
         <li className="header__logo d-flex nav-item">
-          {" "}
-          <FontAwesomeIcon icon={faHome} />{" "}
+          <FontAwesomeIcon icon={faHome} />
         </li>
         <li className="header__title d-flex nav-item">
-          {" "}
-          <p> FindAHome </p>{" "}
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+            {" "}
+            FindAHome{" "}
+          </Link>
         </li>
       </ul>
 

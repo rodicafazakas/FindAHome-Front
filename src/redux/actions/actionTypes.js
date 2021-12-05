@@ -4,9 +4,11 @@ const actionTypes = {
   createAnnouncement: "CREATE_ANNOUNCEMENT",
   deleteAnnouncement: "DELETE_ANNOUNCEMENT",
   updateAnnouncement: "UPDATE_ANNOUNCEMENT",
+  addFavourite: "ADD_TO_FAVOURITE",
+  deleteFavourite: "DELETE_FROM_FAVOURITE",
+
   loginUser: "LOGIN_USER",
   registerUser: "REGISTER_USER",
-  addFavourite: "ADD_TO_FAVOURITE",
   loadUser: "LOAD_USER",
   logoutUser: "LOGOUT_USER",
 };

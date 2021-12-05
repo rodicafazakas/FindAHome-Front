@@ -30,7 +30,7 @@ describe("Given an AnnouncementForm component", () => {
         </Provider>
       );
 
-      const submit = screen.getByRole("button", { name: "Anade anuncio" });
+      const submit = screen.getByLabelText("Añade fotos a tu anuncio");
 
       expect(submit).toBeInTheDocument();
     });
