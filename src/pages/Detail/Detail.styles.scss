@@ -1,13 +1,8 @@
 @import "../../../src/styles/variables";
 
-.detail-main-container {
-  margin-top: 20px;
-  padding-top: 10px;
-}
-
-.detail-container {
-  display: flex;
-  flex-direction: row;
+.main-container {
+  height: fit-content;
+  margin: 15px;
 }
 
 .icon {
@@ -17,8 +12,23 @@
   margin-right: 15px;
 }
 
+.detail__container {
+  display: block;
+  width: 100%;
+}
+
 .detail__price {
-  width: 290px;
+  width: fit-content;
+  display: block;
+  width: 100%;
+  padding: 5px;
+}
+
+.button__price {
+  display: block;
+  width: 100%;
+  margin: 7px 0 15px;
+  padding: 5px;
 }
 
 @media (min-width: 600px) {

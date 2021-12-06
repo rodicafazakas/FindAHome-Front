@@ -1,0 +1,9 @@
+.myfavourites {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.myfavourites > * {
+  margin-bottom: 17px;
+}

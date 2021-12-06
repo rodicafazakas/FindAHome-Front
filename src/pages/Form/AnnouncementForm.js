@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 import useAnnouncement from "../../hooks/useAnnouncement";
 import useAnnouncements from "../../hooks/useAnnouncements";
+import "./AnnouncementForm.styles.scss";
 
 const AnnouncementForm = () => {
   const urlSearchParams = useMemo(() => {
@@ -270,7 +271,7 @@ const AnnouncementForm = () => {
             </div>
             <button
               type="submit"
-              className="btn btn-primary"
+              className="add-update"
               disabled={buttonDisabled}
             >
               {textButton}
