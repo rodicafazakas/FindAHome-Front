@@ -3,10 +3,17 @@ import { useEffect } from "react";
 
 import AnnouncementCard from "../../components/AnnouncementCard/AnnouncementCard";
 import useUser from "../../hooks/useUser";
+import useAnnouncement from "../../hooks/useAnnouncement";
 import "./MyFavourites.styles.scss";
 
 const MyFavourites = () => {
   const { user, loadUser } = useUser();
+  const { deleteFavourite } = useAnnouncement();
+
+  const deleteFromFav = (userId, announcementId, event) => {
+    event.stopPropagation();
+    deleteFavourite(userId, announcementId);
+  };
 
   useEffect(() => {
     if (!user.isAuthenticated) {
@@ -28,7 +35,14 @@ const MyFavourites = () => {
       <h2> Mis favoritos </h2>
       {user.isAuthenticated && user.user.customerType && user.user.favourites
         ? user.user.favourites.map((fav) => (
-            <AnnouncementCard key={fav.id} announcement={fav} />
+            <AnnouncementCard
+              key={fav.id}
+              announcement={fav}
+              isFavourite={true}
+              deleteFromFav={(event) =>
+                deleteFromFav(user.user.id, fav.id, event)
+              }
+            />
           ))
         : "User data is loading"}
     </div>

@@ -107,11 +107,11 @@ export const deleteFavouriteThunk =
     );
 
     const response = await fetch(
-      `${apiUrl}/users/${userId}/announcements/${announcementId}`,
+      `${apiUrl}/users/${userId}/favourites/${announcementId}`,
       {
         method: "DELETE",
         headers: {
-          Authorization: "Bearer" + token,
+          Authorization: "Bearer " + token,
         },
       }
     );

@@ -9,6 +9,8 @@ import { useNavigate } from "react-router";
 import useAnnouncement from "../../hooks/useAnnouncement";
 
 import "./Listing.styles.scss";
+import useUser from "../../hooks/useUser";
+import jwtDecode from "jwt-decode";
 
 const Listing = () => {
   const urlSearchParams = useMemo(() => {
@@ -34,12 +36,34 @@ const Listing = () => {
     navigate(`/announcements/${city}/mapa`);
   };
 
-  const { addFavourite } = useAnnouncement();
+  const { addFavourite, deleteFavourite } = useAnnouncement();
 
-  const addToFav = (id, event) => {
+  const addToFav = (userId, announcementId, event) => {
     event.stopPropagation();
-    addFavourite(id);
+    addFavourite(userId, announcementId);
   };
+
+  const deleteFromFav = (userId, announcementId, event) => {
+    event.stopPropagation();
+    deleteFavourite(userId, announcementId);
+  };
+
+  const { user, loadUser } = useUser();
+
+  useEffect(() => {
+    if (!user.isAuthenticated) {
+      let loggedInUser;
+      if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
+        const { token } = JSON.parse(
+          localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
+        );
+        loggedInUser = jwtDecode(token);
+      }
+      if (loggedInUser) {
+        loadUser(loggedInUser.id);
+      }
+    }
+  }, [loadUser, user]);
 
   return (
     <div className="directory container-fluid d-flex flex-column">
@@ -66,7 +90,7 @@ const Listing = () => {
 
       <div className="row">
         <ul className="announcements-list col">
-          {announcements && announcements.length
+          {announcements && announcements.length && user.user.favourites
             ? announcements.map((announcement) => (
                 <AnnouncementCard
                   key={announcement.id}
@@ -74,10 +98,18 @@ const Listing = () => {
                   actiononclick={() => {
                     goToDetail(announcement.id);
                   }}
-                  addToFav={(event) => addToFav(announcement.id, event)}
+                  addToFav={(event) =>
+                    addToFav(user.user.id, announcement.id, event)
+                  }
+                  deleteFromFav={(event) =>
+                    deleteFromFav(user.user.id, announcement.id, event)
+                  }
+                  isFavourite={user.user.favourites
+                    .map((fav) => fav.id)
+                    .includes(announcement.id)}
                 />
               ))
-            : "There is no data available from the Heroku API"}
+            : "The data from the Heroku API is loading"}
         </ul>
       </div>
     </div>
