@@ -1,3 +1,8 @@
 body {
   background-color: #e5e5e5;
 }
+
+.map {
+  width: 100vw;
+  height: 100vh;
+}
