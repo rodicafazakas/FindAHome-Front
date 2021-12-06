@@ -19,6 +19,22 @@ afterAll(() => {
 });
 
 describe("Given an AnnouncementForm component", () => {
+  let store = configureStore();
+  describe("When the user has not typed the price", () => {
+    test("Then it should have a disabled button", () => {
+      render(
+        <Router>
+          <Provider store={store}>
+            <AnnouncementForm />
+          </Provider>
+        </Router>
+      );
+      const submitButton = screen.getByRole("button");
+
+      expect(submitButton).toBeDisabled();
+    });
+  });
+
   describe("When it is rendered", () => {
     test("Then it should render the inputs and the submit button", () => {
       let store = configureStore();

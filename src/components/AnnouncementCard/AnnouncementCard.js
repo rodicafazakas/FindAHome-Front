@@ -13,6 +13,7 @@ const AnnouncementCard = ({
   actiononclick,
   addToFav,
   updateClick,
+  deleteClick,
 }) => {
   let loggedInUser;
   if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
@@ -56,7 +57,7 @@ const AnnouncementCard = ({
           <>
             <FontAwesomeIcon icon={faEdit} onClick={updateClick} />
             <div className="thrash">
-              <FontAwesomeIcon icon={faTrash} />
+              <FontAwesomeIcon icon={faTrash} onClick={deleteClick} />
             </div>
           </>
         )}
