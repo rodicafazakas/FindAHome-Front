@@ -13,7 +13,7 @@ import "./Listing.styles.scss";
 const Listing = () => {
   const urlSearchParams = useMemo(() => {
     return new URLSearchParams(location.search);
-  },[])
+  }, []);
 
   const { announcements, loadAnnouncements } = useAnnouncements();
 
@@ -28,6 +28,10 @@ const Listing = () => {
 
   const seeFilters = (city) => {
     navigate(`/announcements/${city}/filters`);
+  };
+
+  const seeMapa = (city) => {
+    navigate(`/announcements/${city}/mapa`);
   };
 
   const { addFavourite } = useAnnouncement();
@@ -50,7 +54,12 @@ const Listing = () => {
           <span>Filter</span>
         </div>
         <div>
-          <FontAwesomeIcon icon={faMapMarkerAlt} />
+          <FontAwesomeIcon
+            icon={faMapMarkerAlt}
+            onClick={() => {
+              seeMapa(urlSearchParams.get("city"));
+            }}
+          />
           <span>Mapa</span>
         </div>
       </div>

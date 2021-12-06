@@ -11,6 +11,7 @@ import AnnouncementForm from "./pages/Form/AnnouncementForm";
 import FiltersList from "./components/FiltersList/FiltersList";
 import MyFavourites from "./pages/MyFavourites/MyFavourites";
 import MyAdverts from "./pages/MyAdverts/MyAdverts";
+import MapView from "./components/MapView/MapView";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/announcements" element={<Listing />} />
           <Route path="announcements/:city/filters" element={<FiltersList />} />
+          <Route path="announcements/:city/mapa" element={<MapView />} />
           <Route path="/announcements/:id" element={<Detail />} />
           <Route path="/register" element={<SignUp />} />
           <Route path="/login" element={<SignIn />} />
