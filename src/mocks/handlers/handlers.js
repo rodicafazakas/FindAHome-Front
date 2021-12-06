@@ -4,7 +4,7 @@ export const handlers = [
   rest.get(
     "https://proyecto-final-rodica-back.herokuapp.com/announcements",
     async (req, res, ctx) => {
-      const resp = res(
+      return res(
         ctx.json([
           {
             price: 355000,
@@ -62,7 +62,6 @@ export const handlers = [
           },
         ])
       );
-      return resp;
     }
   ),
 
@@ -72,7 +71,8 @@ export const handlers = [
       const { username, password } = req.body;
       return res(
         ctx.json({
-          token: "f79e82e8-c34a-4dc7-a49e-9fadc0979fda",
+          token:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNhbmRhIiwiY3VzdG9tZXJUeXBlIjoic2VsbGVyIiwiaWQiOiI2MTljY2RkOWFkZWRlOTQ0ODFkNWMyYWEiLCJpYXQiOjE2Mzg3MzQyMTJ9.f3BEXBQ6Q9YGTXZnOU3bzw5ywjUEoFOXoj0OPolv4K8",
           username,
           password,
         })

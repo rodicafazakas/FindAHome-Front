@@ -15,8 +15,8 @@ const AnnouncementForm = () => {
 
   useEffect(() => {
     if (urlSearchParams.get("id")) {
-      loadAnnouncement(urlSearchParams.get("id"));    
-    } 
+      loadAnnouncement(urlSearchParams.get("id"));
+    }
   }, [loadAnnouncement, urlSearchParams]);
 
   const initialAnnouncement = useMemo(() => {
@@ -51,9 +51,6 @@ const AnnouncementForm = () => {
       setAddressData(announcement.address);
       setTextButton("Modificar anuncio");
     } else {
-      // setAnnouncementData(initialAnnouncement);
-      // setAddressData(initialAnnouncementAddress);
-      // setAddressData(announcement.address);
       setTextButton("Añadir anuncio");
     }
   }, [announcement]);
@@ -117,14 +114,10 @@ const AnnouncementForm = () => {
     } else {
       setAnnouncementData({
         ...announcementData,
-        // address: { ...addressData },
       });
       createAnnouncement(announcementData);
       navigate(-1);
     }
-
-    // setAnnouncementData(initialAnnouncement);
-    // setAddressData(initialAnnouncementAddress);
   };
 
   return (

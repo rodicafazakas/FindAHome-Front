@@ -15,9 +15,6 @@ export const storageMock = () => {
     clear: function () {
       storage = {};
     },
-    getLength: () => {
-      return Object.keys(storage).length;
-    },
     key: function (i) {
       const keys = Object.keys(storage);
       return keys[i] || null;

@@ -69,14 +69,6 @@ export const updateAnnouncementThunk = (announcement) => async (dispatch) => {
     localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
   );
 
-  // const announcementFormData = new FormData();
-  // Object.entries(announcement)
-  //   .filter(([key, value]) => key !== "street" && key !== "floor")
-  //   .forEach(([key, value]) => announcementFormData.append(key, value));
-
-  // announcementFormData.append("address[street]", announcement.street);
-  // announcementFormData.append("address[floor]", announcement.floor);
-
   const response = await fetch(`${apiUrl}/announcements/${announcement.id}`, {
     method: "PUT",
     body: JSON.stringify(announcement),

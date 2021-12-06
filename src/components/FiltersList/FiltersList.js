@@ -72,5 +72,3 @@ const FiltersList = () => {
 };
 
 export default FiltersList;
-
-// https://medium.com/weekly-webtips/storing-filters-to-url-in-react-redux-app-2e54437b3211

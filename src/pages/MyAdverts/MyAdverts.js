@@ -4,9 +4,11 @@ import { useEffect } from "react";
 
 import AnnouncementCard from "../../components/AnnouncementCard/AnnouncementCard";
 import useUser from "../../hooks/useUser";
+import useAnnouncements from "../../hooks/useAnnouncements";
 
 const MyAdverts = () => {
   const { user, loadUser } = useUser();
+  const { deleteAnnouncement } = useAnnouncements();
 
   useEffect(() => {
     let loggedInUser;
@@ -40,6 +42,9 @@ const MyAdverts = () => {
               announcement={advert}
               updateClick={() => {
                 navigate(`/announcements/new?id=${advert.id}`);
+              }}
+              deleteClick={() => {
+                deleteAnnouncement(advert.id);
               }}
             />
           ))

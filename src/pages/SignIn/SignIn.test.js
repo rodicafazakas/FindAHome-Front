@@ -22,24 +22,6 @@ afterAll(() => {
 
 describe("Given a SignIn component", () => {
   let store = configureStore();
-
-  describe("When the user has not typed the username", () => {
-    test("Then it should have a disabled button", () => {
-      render(
-        <Router>
-          <Provider store={store}>
-            <SignIn />
-          </Provider>
-        </Router>
-      );
-      const addButton = screen.getByRole("button", {
-        name: "Iniciar Session",
-      });
-
-      expect(addButton).toBeDisabled();
-    });
-  });
-
   describe("When it is rendered", () => {
     test("Then it should show a Iniciar session button", () => {
       render(
@@ -70,7 +52,8 @@ describe("Given a SignIn component", () => {
 
       await waitFor(async () => {
         expect(JSON.parse(window.localStorage.getItem("tokenizer"))).toEqual({
-          token: "f79e82e8-c34a-4dc7-a49e-9fadc0979fda",
+          token:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNhbmRhIiwiY3VzdG9tZXJUeXBlIjoic2VsbGVyIiwiaWQiOiI2MTljY2RkOWFkZWRlOTQ0ODFkNWMyYWEiLCJpYXQiOjE2Mzg3MzQyMTJ9.f3BEXBQ6Q9YGTXZnOU3bzw5ywjUEoFOXoj0OPolv4K8",
         });
       });
     });
