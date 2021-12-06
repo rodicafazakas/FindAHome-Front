@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addFavouriteThunk,
+  deleteFavouriteThunk,
   loadAnnouncementThunk,
 } from "../redux/thunks/announcementThunk";
 
@@ -17,15 +18,15 @@ const useAnnouncement = () => {
   );
 
   const addFavourite = useCallback(
-    (announcementId) => {
-      dispatch(addFavouriteThunk("619ccdd9adede94481d5c2aa", announcementId));
+    (userId, announcementId) => {
+      dispatch(addFavouriteThunk(userId, announcementId));
     },
     [dispatch]
   );
 
   const deleteFavourite = useCallback(
     (userId, announcementId) => {
-      dispatch(addFavouriteThunk(userId, announcementId));
+      dispatch(deleteFavouriteThunk(userId, announcementId));
     },
     [dispatch]
   );
