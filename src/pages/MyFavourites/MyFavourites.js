@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 import AnnouncementCard from "../../components/AnnouncementCard/AnnouncementCard";
 import useUser from "../../hooks/useUser";
+import "./MyFavourites.styles.scss";
 
 const MyFavourites = () => {
   const { user, loadUser } = useUser();
@@ -23,8 +24,8 @@ const MyFavourites = () => {
   }, [loadUser, user]);
 
   return (
-    <div className="myfavourites">
-      <h1> Mis favoritos </h1>
+    <div className="myfavourites col">
+      <h2> Mis favoritos </h2>
       {user.isAuthenticated && user.user.customerType && user.user.favourites
         ? user.user.favourites.map((fav) => (
             <AnnouncementCard key={fav.id} announcement={fav} />

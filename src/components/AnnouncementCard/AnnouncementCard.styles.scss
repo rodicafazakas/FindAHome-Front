@@ -4,7 +4,7 @@
   background-color: white;
   border-radius: 35px 0 35px 0;
   width: 290px;
-  height: 180px;
+  height: fit-content;
 
   &__image {
     height: 125px;
@@ -30,12 +30,13 @@
   &__contact {
     display: flex;
     justify-content: flex-end;
-    margin-right: 10px;
+    margin-right: 25px;
+    margin-bottom: 10px;
   }
 }
 
 .fav {
-  margin-left: 0 10px;
+  margin-left: 0 0 0 15px;
 }
 
 .card-image {
