@@ -68,22 +68,23 @@ const Listing = () => {
   return (
     <div className="directory container-fluid d-flex flex-column">
       <div className="filters-icons pt-3 pb-3">
-        <div className="dropdown">
-          <FontAwesomeIcon
-            icon={faFilter}
-            onClick={() => {
-              seeFilters(urlSearchParams.get("city"));
-            }}
-          />
+        <div
+          className="dropdown"
+          data-testid="filters"
+          onClick={() => {
+            seeFilters(urlSearchParams.get("city"));
+          }}
+        >
+          <FontAwesomeIcon icon={faFilter} />
           <span>Filter</span>
         </div>
-        <div>
-          <FontAwesomeIcon
-            icon={faMapMarkerAlt}
-            onClick={() => {
-              seeMapa(urlSearchParams.get("city"));
-            }}
-          />
+        <div
+          data-testid="mapa"
+          onClick={() => {
+            seeMapa(urlSearchParams.get("city"));
+          }}
+        >
+          <FontAwesomeIcon icon={faMapMarkerAlt} />
           <span>Mapa</span>
         </div>
       </div>

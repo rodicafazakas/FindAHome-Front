@@ -4,18 +4,17 @@ import IconLocation from "../IconLocation/IconLocation";
 const Markers = (props) => {
   const { announcements } = props;
   console.log(announcements);
-  const markers = announcements.map((announcement, i) => (
+  // eslint-disable-next-line array-callback-return
+  const markers = announcements.map((announcement, i) => {
+    console.log(announcement);
     <Marker
       key={i}
-      position={{
-        lat: `${announcement.address.coordinates.latitude}`,
-        lng: `${announcement.address.coordinates.longitude}`,
-      }}
+      position={`${announcement?.address?.coordinates?.latitude}`}
       icon={IconLocation}
     >
       {" "}
-    </Marker>
-  ));
+    </Marker>;
+  });
   return markers;
 };
 
