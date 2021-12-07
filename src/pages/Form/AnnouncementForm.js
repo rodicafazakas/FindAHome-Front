@@ -121,6 +121,28 @@ const AnnouncementForm = () => {
     }
   };
 
+  const [state, setState] = useState({
+    latitude: 0,
+    longitude: 0,
+  });
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      },
+      function (error) {
+        console.log(error);
+      },
+      {
+        enableHighAccuracy: true,
+      }
+    );
+  });
+
   return (
     <div className="form">
       <div className="container">
@@ -268,6 +290,12 @@ const AnnouncementForm = () => {
                 onChange={handleAddressChange}
                 placeholder="Floor"
               />
+            </div>
+            <div className="form-group">
+              <p>{state.latitude}</p>
+            </div>
+            <div className="form-group">
+              <p>{state.longitude}</p>
             </div>
             <button
               type="submit"

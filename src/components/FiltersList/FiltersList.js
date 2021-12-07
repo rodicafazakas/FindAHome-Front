@@ -26,6 +26,7 @@ const FiltersList = () => {
 
   return (
     <div className="filters-list pt-3 pb-3">
+      <h4> Additional filters </h4>
       <form className="search" onSubmit={handleSubmit}>
         <div className="form-group">
           <input
@@ -37,7 +38,7 @@ const FiltersList = () => {
           />
         </div>
         <div className="form-group">
-          <label> Tipo de vivienda </label>
+          <label htmlFor="dwelling_type"> Tipo de vivienda </label>
           <input
             type="text"
             className="form-control"

@@ -4,6 +4,7 @@ import {
   faPhoneAlt,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import jwtDecode from "jwt-decode";
 import "./AnnouncementCard.styles.scss";
@@ -17,13 +18,19 @@ const AnnouncementCard = ({
   deleteClick,
   isFavourite,
 }) => {
-  let loggedInUser;
-  if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
-    const { token } = JSON.parse(
-      localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
-    );
-    loggedInUser = jwtDecode(token);
-  }
+  const [user, setUser] = useState({});
+  const [favoriteColor, setFavoriteColor] = React.useState(isFavourite);
+
+  useEffect(() => {
+    let loggedInUser;
+    if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
+      const { token } = JSON.parse(
+        localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
+      );
+      loggedInUser = jwtDecode(token);
+      setUser(loggedInUser);
+    }
+  }, []);
 
   return (
     <li className="card col" onClick={actiononclick}>
@@ -47,15 +54,19 @@ const AnnouncementCard = ({
         </div>
       </div>
       <div className="card__contact d-flex justify-content-end">
-        {loggedInUser.customerType === "buyer" ? (
+        {user.customerType === "buyer" ? (
           <>
             <FontAwesomeIcon icon={faPhoneAlt} />
-            <span> LLamar </span>
-            <div className="fav">
+            <span> {user?.phoneNumber} </span>
+            <div
+              className="fav"
+              onClick={isFavourite ? deleteFromFav : addToFav}
+            >
               <FontAwesomeIcon
                 icon={faHeart}
-                onClick={isFavourite ? deleteFromFav : addToFav}
-                color={isFavourite ? `#ef8b42` : `black`}
+                data-testid="heart-icon"
+                onClick={() => setFavoriteColor(!favoriteColor)}
+                color={favoriteColor ? `#ef8b42` : `black`}
               />
             </div>
           </>
