@@ -16,7 +16,6 @@ const MyFavourites = () => {
   };
 
   useEffect(() => {
-    if (!user.isAuthenticated) {
       let loggedInUser;
       if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
         const { token } = JSON.parse(
@@ -27,8 +26,7 @@ const MyFavourites = () => {
       if (loggedInUser) {
         loadUser(loggedInUser.id);
       }
-    }
-  }, [loadUser, user]);
+  }, [loadUser]);
 
   return (
     <div className="myfavourites col">
@@ -37,7 +35,9 @@ const MyFavourites = () => {
         ? user.user.favourites.map((fav) => (
             <AnnouncementCard
               key={fav.id}
+              isListingPage={false}
               announcement={fav}
+              user={user}
               isFavourite={true}
               deleteFromFav={(event) =>
                 deleteFromFav(user.user.id, fav.id, event)

@@ -1,14 +1,22 @@
-.register-form {
+.register {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.register {
-  position: relative;
+  margin: 20px 15px;
 }
 
 .container {
   position: absolute;
-  top: 150px;
+  top: 250px;
+}
+
+.form-control {
+  border-radius: 10px;
+  margin: 10px 15px;
+}
+
+.signup-button {
+  width: fit-content;
+  margin-top: 20px;
 }

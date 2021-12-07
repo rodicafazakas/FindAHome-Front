@@ -22,53 +22,54 @@ const SignUp = () => {
   };
 
   return (
-    <div className="register">
-      <div className="container ">
-        <div className="row text-center align-items-center">
-          <h2> Crea tu cuenta </h2>
-          <form
-            className="register-form form-group"
-            autoComplete="off"
-            onSubmit={onSubmit}
-          >
-            <input
-              className="name form-control"
-              type="text"
-              id="name"
-              onChange={handleChange}
-              placeholder="Name"
-            />
-            <input
-              className="username form-control"
-              type="text"
-              id="username"
-              onChange={handleChange}
-              placeholder="Username"
-            />
-            <input
-              className="password form-control"
-              type="password"
-              id="password"
-              onChange={handleChange}
-              placeholder="Password"
-            />
-            <input
-              className="phoneNumber form-control"
-              type="text"
-              id="phoneNumber"
-              onChange={handleChange}
-              placeholder="Phone number"
-            />
-            <input
-              className="customerType form-control"
-              type="text"
-              id="customerType"
-              onChange={handleChange}
-              placeholder="seller o buyer"
-            />
-            <button type="submit"> Crear mi cuenta </button>
-          </form>
-        </div>
+    <div className="container ">
+      <div className="row text-center align-items-center">
+        <h2> Crea tu cuenta </h2>
+        <form
+          className="register-form col form-group"
+          autoComplete="off"
+          onSubmit={onSubmit}
+        >
+          <input
+            className="name form-control"
+            type="text"
+            id="name"
+            onChange={handleChange}
+            placeholder="Name"
+          />
+          <input
+            className="username form-control"
+            type="text"
+            id="username"
+            onChange={handleChange}
+            placeholder="Username"
+          />
+          <input
+            className="password form-control"
+            type="password"
+            id="password"
+            onChange={handleChange}
+            placeholder="Password"
+          />
+          <input
+            className="phoneNumber form-control"
+            type="text"
+            id="phoneNumber"
+            onChange={handleChange}
+            placeholder="Phone number"
+          />
+          <input
+            className="customerType form-control"
+            type="text"
+            id="customerType"
+            onChange={handleChange}
+            placeholder="seller o buyer"
+          />
+          <button className="signup-button" type="submit">
+            {" "}
+            Crear mi cuenta{" "}
+          </button>
+        </form>
       </div>
     </div>
   );
