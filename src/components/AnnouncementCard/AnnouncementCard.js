@@ -4,12 +4,13 @@ import {
   faPhoneAlt,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import jwtDecode from "jwt-decode";
 import "./AnnouncementCard.styles.scss";
 
 const AnnouncementCard = ({
+  isListingPage,
+  user,
   announcement,
   actiononclick,
   addToFav,
@@ -18,19 +19,7 @@ const AnnouncementCard = ({
   deleteClick,
   isFavourite,
 }) => {
-  const [user, setUser] = useState({});
   const [favoriteColor, setFavoriteColor] = React.useState(isFavourite);
-
-  useEffect(() => {
-    let loggedInUser;
-    if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
-      const { token } = JSON.parse(
-        localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
-      );
-      loggedInUser = jwtDecode(token);
-      setUser(loggedInUser);
-    }
-  }, []);
 
   return (
     <li className="card col" onClick={actiononclick}>
@@ -54,10 +43,31 @@ const AnnouncementCard = ({
         </div>
       </div>
       <div className="card__contact d-flex justify-content-end">
-        {user.customerType === "buyer" ? (
+        {user.user.customerType === "seller" && !isListingPage ? (
+          <>
+            <FontAwesomeIcon icon={faEdit} onClick={updateClick} />
+            <div className="thrash">
+              <FontAwesomeIcon icon={faTrash} onClick={deleteClick} />
+            </div>
+          </>
+        ) : user.user.customerType === "seller" && isListingPage ? (
           <>
             <FontAwesomeIcon icon={faPhoneAlt} />
-            <span> {user?.phoneNumber} </span>
+            <span> LLamar </span>
+            <div
+              className="fav"
+            >
+              <FontAwesomeIcon
+                icon={faHeart}
+                data-testid="heart-icon"
+                color={`black`}
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            <FontAwesomeIcon icon={faPhoneAlt} />
+            <span> LLamar </span>
             <div
               className="fav"
               onClick={isFavourite ? deleteFromFav : addToFav}
@@ -68,13 +78,6 @@ const AnnouncementCard = ({
                 onClick={() => setFavoriteColor(!favoriteColor)}
                 color={favoriteColor ? `#ef8b42` : `black`}
               />
-            </div>
-          </>
-        ) : (
-          <>
-            <FontAwesomeIcon icon={faEdit} onClick={updateClick} />
-            <div className="thrash">
-              <FontAwesomeIcon icon={faTrash} onClick={deleteClick} />
             </div>
           </>
         )}

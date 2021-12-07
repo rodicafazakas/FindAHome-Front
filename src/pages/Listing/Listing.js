@@ -18,7 +18,6 @@ const Listing = () => {
   }, []);
 
   const { announcements, loadAnnouncements } = useAnnouncements();
-
   useEffect(() => {
     loadAnnouncements(urlSearchParams.toString());
   }, [loadAnnouncements, urlSearchParams]);
@@ -51,7 +50,6 @@ const Listing = () => {
   const { user, loadUser } = useUser();
 
   useEffect(() => {
-    if (!user.isAuthenticated) {
       let loggedInUser;
       if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
         const { token } = JSON.parse(
@@ -62,8 +60,7 @@ const Listing = () => {
       if (loggedInUser) {
         loadUser(loggedInUser.id);
       }
-    }
-  }, [loadUser, user]);
+  }, [loadUser]);
 
   return (
     <div className="directory container-fluid d-flex flex-column">
@@ -91,23 +88,38 @@ const Listing = () => {
 
       <div className="row">
         <ul className="announcements-list col">
-          {announcements && announcements.length && user.user.favourites
+          {announcements &&
+          announcements.length &&
+          ((user.isAuthenticated && user.user.favourites) ||
+            !user.isAuthenticated)
             ? announcements.map((announcement) => (
                 <AnnouncementCard
                   key={announcement.id}
+                  isListingPage={true}
                   announcement={announcement}
                   actiononclick={() => {
                     goToDetail(announcement.id);
                   }}
-                  addToFav={(event) =>
-                    addToFav(user.user.id, announcement.id, event)
+                  addToFav={
+                    user.isAuthenticated
+                      ? (event) =>
+                          addToFav(user.user.id, announcement.id, event)
+                      : (event) => {}
                   }
-                  deleteFromFav={(event) =>
-                    deleteFromFav(user.user.id, announcement.id, event)
+                  deleteFromFav={
+                    user.isAuthenticated
+                      ? (event) =>
+                          deleteFromFav(user.user.id, announcement.id, event)
+                      : (event) => {}
                   }
-                  isFavourite={user.user.favourites
-                    .map((fav) => fav.id)
-                    .includes(announcement.id)}
+                  isFavourite={
+                    user.isAuthenticated
+                      ? user.user.favourites
+                          .map((fav) => fav.id)
+                          .includes(announcement.id)
+                      : false
+                  }
+                  user={user}
                 />
               ))
             : "The data from the Heroku API is loading"}

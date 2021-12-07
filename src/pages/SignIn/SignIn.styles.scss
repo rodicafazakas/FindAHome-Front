@@ -1,5 +1,23 @@
-.login-form {
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 15px;
+  text-align: center;
+}
+
+.form-control {
+  margin: 10px 0;
+}
+
+.login-button {
+  align-items: center;
+  width: 100%;
+}
+
+.registrar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px;
 }

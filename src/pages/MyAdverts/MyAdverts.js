@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import AnnouncementCard from "../../components/AnnouncementCard/AnnouncementCard";
 import useUser from "../../hooks/useUser";
 import useAnnouncements from "../../hooks/useAnnouncements";
+import "./MyAdverts.styles.scss";
 
 const MyAdverts = () => {
   const { user, loadUser } = useUser();
@@ -31,6 +32,7 @@ const MyAdverts = () => {
   return (
     <div className="myadverts">
       <h1> Mis anuncios </h1>
+
       <button type="text" className="addButton" onClick={actiononclick}>
         Añade un anuncio
       </button>
@@ -39,6 +41,8 @@ const MyAdverts = () => {
         ? user.user.adverts.map((advert) => (
             <AnnouncementCard
               key={advert.id}
+              isListingPage={false}
+              user={user}
               announcement={advert}
               updateClick={() => {
                 navigate(`/announcements/new?id=${advert.id}`);
