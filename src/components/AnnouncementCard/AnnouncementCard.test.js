@@ -1,12 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import { announcementExample } from "../../factories/announcementFactory";
+import { userExample } from "../../factories/userFactory";
 import configureStore from "../../redux/store/store";
 import AnnouncementCard from "./AnnouncementCard";
 import { server } from "../../mocks/server/server";
-import userEvent from "@testing-library/user-event";
 
 beforeAll(() => {
   server.listen();
@@ -31,10 +31,14 @@ describe("Given an AnnouncementCard component", () => {
   describe("When it receives an announcement", () => {
     test("Then it should render a card", () => {
       const newAnnouncement = announcementExample;
+      const userFake = userExample;
+      const user = {
+        user: userFake,
+      };
       render(
         <Provider store={store}>
           <Router>
-            <AnnouncementCard announcement={newAnnouncement} />
+            <AnnouncementCard announcement={newAnnouncement} user={user} />
           </Router>
         </Provider>
       );
@@ -48,26 +52,31 @@ describe("Given an AnnouncementCard component", () => {
   });
 
   describe("When the user clicks on the heart icon", () => {
-    test("Then the colour of the heart changes", () => {
+    test("Then the colour of the heart changes", async () => {
       const announcementFake = announcementExample;
-      const onClickMock = jest.fn();
-      let isFavourite = false;
+      const userFake = userExample;
+      const user = {
+        user: userFake,
+      };
+      let isFavourite = true;
       render(
         <Provider store={store}>
           <Router>
             <AnnouncementCard
               announcement={announcementFake}
-              onClick={onClickMock}
               isFavourite={isFavourite}
+              isListingPage={true}
+              user={user}
             />
           </Router>
         </Provider>
       );
       const heartIcon = screen.getByTestId("heart-icon");
-      userEvent.click(heartIcon);
+      fireEvent.click(heartIcon);
 
-      expect(onClickMock).toHaveBeenCalled();
-      // expect(isFavourite).toBe(false);
+      await waitFor(async () => {
+        expect(isFavourite).toBe(!isFavourite);
+      });
     });
   });
 });

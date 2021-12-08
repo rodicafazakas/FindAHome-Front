@@ -15,15 +15,15 @@ const useUser = () => {
   const dispatch = useDispatch();
 
   const loginUser = useCallback(
-    (user) => {
-      dispatch(loginUserThunk(user));
+    (signedInUser) => {
+      dispatch(loginUserThunk(signedInUser));
     },
     [dispatch]
   );
 
   const registerUser = useCallback(
-    (user) => {
-      dispatch(registerUserThunk(user));
+    (registeredUser) => {
+      dispatch(registerUserThunk(registeredUser));
     },
     [dispatch]
   );

@@ -54,14 +54,8 @@ const AnnouncementCard = ({
           <>
             <FontAwesomeIcon icon={faPhoneAlt} />
             <span> LLamar </span>
-            <div
-              className="fav"
-            >
-              <FontAwesomeIcon
-                icon={faHeart}
-                data-testid="heart-icon"
-                color={`black`}
-              />
+            <div className="fav">
+              <FontAwesomeIcon icon={faHeart} color={`black`} />
             </div>
           </>
         ) : (
@@ -70,11 +64,11 @@ const AnnouncementCard = ({
             <span> LLamar </span>
             <div
               className="fav"
+              data-testid="heart-icon"
               onClick={isFavourite ? deleteFromFav : addToFav}
             >
               <FontAwesomeIcon
                 icon={faHeart}
-                data-testid="heart-icon"
                 onClick={() => setFavoriteColor(!favoriteColor)}
                 color={favoriteColor ? `#ef8b42` : `black`}
               />

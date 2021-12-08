@@ -29,7 +29,7 @@ describe("Given an AnnouncementForm component", () => {
           </Provider>
         </Router>
       );
-      const submitButton = screen.getByRole("button");
+      const submitButton = screen.getAllByRole("button")[0];
 
       expect(submitButton).toBeDisabled();
     });
@@ -37,7 +37,6 @@ describe("Given an AnnouncementForm component", () => {
 
   describe("When it is rendered", () => {
     test("Then it should render the inputs and the submit button", () => {
-      let store = configureStore();
       render(
         <Provider store={store}>
           <Router>
