@@ -34,6 +34,12 @@ const usersReducer = (
         user: {},
       };
       break;
+    case actionTypes.loggedUser:
+      newUser = {
+        isAuthenticated: true,
+        user: action.user,
+      };
+      break;
     default:
       newUser = user;
   }

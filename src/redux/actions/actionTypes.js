@@ -11,6 +11,7 @@ const actionTypes = {
   registerUser: "REGISTER_USER",
   loadUser: "LOAD_USER",
   logoutUser: "LOGOUT_USER",
+  loggedUser: "LOGGED_USER",
 };
 
 export default actionTypes;

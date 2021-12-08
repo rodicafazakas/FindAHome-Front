@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";
@@ -12,8 +13,22 @@ import FiltersList from "./components/FiltersList/FiltersList";
 import MyFavourites from "./pages/MyFavourites/MyFavourites";
 import MyAdverts from "./pages/MyAdverts/MyAdverts";
 import MapView from "./components/MapView/MapView";
+import useUser from "./hooks/useUser";
+import { useEffect } from "react";
 
 function App() {
+  const { loggedUser } = useUser();
+
+  useEffect(() => {
+    if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
+      const { token } = JSON.parse(
+        localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
+      );
+      const loggedInUser = jwtDecode(token);
+      loggedUser(loggedInUser);
+    }
+  }, [loggedUser]);
+
   return (
     <div className="App">
       <Router>
