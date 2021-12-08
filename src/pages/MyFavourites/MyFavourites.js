@@ -26,7 +26,7 @@ const MyFavourites = () => {
     if (loggedInUser) {
       loadUser(loggedInUser.id);
     }
-  }, [loadUser]);
+  }, [loadUser, user]);
 
   return (
     <div className="myfavourites col">

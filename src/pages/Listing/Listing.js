@@ -50,17 +50,17 @@ const Listing = () => {
   const { user, loadUser } = useUser();
 
   useEffect(() => {
-      let loggedInUser;
-      if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
-        const { token } = JSON.parse(
-          localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
-        );
-        loggedInUser = jwtDecode(token);
-      }
-      if (loggedInUser) {
-        loadUser(loggedInUser.id);
-      }
-  }, [loadUser]);
+    let loggedInUser;
+    if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
+      const { token } = JSON.parse(
+        localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
+      );
+      loggedInUser = jwtDecode(token);
+    }
+    if (loggedInUser) {
+      loadUser(loggedInUser.id);
+    }
+  }, [loadUser,user]);
 
   return (
     <div className="directory container-fluid d-flex flex-column">

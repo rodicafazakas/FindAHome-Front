@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 
@@ -35,17 +35,9 @@ describe("Given a FiltersList component", () => {
       let testLocation;
       render(
         <MemoryRouter initialEntries={[`/announcements/${city}/filters`]}>
-          <Routes>
+          <Router>
             <FiltersList />
-            <Route
-              to="*"
-              render={({ history, location }) => {
-                testHistory = history;
-                testLocation = location;
-                return null;
-              }}
-            />
-          </Routes>
+          </Router>
         </MemoryRouter>
       );
       const neighbourhoodInput = "Born";
