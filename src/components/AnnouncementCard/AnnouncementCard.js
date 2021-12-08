@@ -28,7 +28,7 @@ const AnnouncementCard = ({
           className="card-image"
           src={announcement.images[0]}
           alt="apartment"
-          width="285"
+          width="290"
           height="125"
         />
       </div>
