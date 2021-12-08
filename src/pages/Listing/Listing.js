@@ -60,7 +60,7 @@ const Listing = () => {
     if (loggedInUser) {
       loadUser(loggedInUser.id);
     }
-  }, [loadUser,user]);
+  }, [loadUser]);
 
   return (
     <div className="directory container-fluid d-flex flex-column">

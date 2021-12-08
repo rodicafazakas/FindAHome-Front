@@ -41,15 +41,6 @@ const FiltersList = () => {
           <input
             type="text"
             className="form-control"
-            id="dwelling_type"
-            onChange={handleChange}
-            placeholder="Tipo de vivienda"
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            className="form-control"
             id="price_max"
             onChange={handleChange}
             placeholder="Precio maximo de venta"

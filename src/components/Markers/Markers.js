@@ -4,9 +4,7 @@ import { Icon } from "leaflet";
 
 const Markers = (props) => {
   const { announcements } = props;
-  console.log(announcements);
   return announcements.map((announcement, i) => {
-    console.log(announcement);
     const position = [
       `${announcement?.address?.coordinates?.latitude}`,
       `${announcement?.address?.coordinates?.longitude}`,

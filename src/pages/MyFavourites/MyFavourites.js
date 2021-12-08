@@ -10,9 +10,10 @@ const MyFavourites = () => {
   const { user, loadUser } = useUser();
   const { deleteFavourite } = useAnnouncement();
 
-  const deleteFromFav = (userId, announcementId, event) => {
+  const deleteFromFav = async (userId, announcementId, event) => {
     event.stopPropagation();
-    deleteFavourite(userId, announcementId);
+    await deleteFavourite(userId, announcementId);
+    loadUser(user.user.id)
   };
 
   useEffect(() => {
@@ -26,7 +27,7 @@ const MyFavourites = () => {
     if (loggedInUser) {
       loadUser(loggedInUser.id);
     }
-  }, [loadUser, user]);
+  }, [loadUser]);
 
   return (
     <div className="myfavourites col">
