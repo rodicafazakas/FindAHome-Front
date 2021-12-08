@@ -61,7 +61,7 @@ describe("Given a Header component", () => {
     });
   });
 
-  describe("If there is a token in the local storage", () => {
+  describe("When the user is authenticated", () => {
     test("Then the header shows a salir button", () => {
       const userFake = userExample;
       const user = {

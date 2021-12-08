@@ -79,4 +79,43 @@ export const handlers = [
       );
     }
   ),
+
+  rest.get(
+    "https://proyecto-final-rodica-back.herokuapp.com/announcements/619e6a6fc665ebc5ac1da426",
+    async (req, res, ctx) => {
+      return res(
+        ctx.json([
+          {
+            address: {
+              coordinates: {
+                longitude: 2.1828,
+                latitude: 41.3848,
+              },
+              street: "Carrer del Born",
+              floor: 2,
+            },
+            price: 300000,
+            area: 100,
+            bedrooms: 2,
+            bathrooms: 1,
+            description:
+              "The best apartment in town. Next to the Ciutadella park",
+            parking: false,
+            terrace: false,
+            elevator: false,
+            city: "Barcelona",
+            neighbourhood: "Born",
+            propertyType: "dwelling",
+            dwellingType: "apartment",
+            seller: "619ccdd9adede94481d5c2aa",
+            favourites: [],
+            images: [
+              "https://storage.googleapis.com/findahome-c291c.appspot.com/home8-1638286893354.jpg",
+            ],
+            id: "619e6a6fc665ebc5ac1da426",
+          },
+        ])
+      );
+    }
+  ),
 ];

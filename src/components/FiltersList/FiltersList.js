@@ -38,12 +38,12 @@ const FiltersList = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="dwelling_type"> Tipo de vivienda </label>
           <input
             type="text"
             className="form-control"
             id="dwelling_type"
             onChange={handleChange}
+            placeholder="Tipo de vivienda"
           />
         </div>
         <div className="form-group">
@@ -52,7 +52,16 @@ const FiltersList = () => {
             className="form-control"
             id="price_max"
             onChange={handleChange}
-            placeholder="Precio de venta"
+            placeholder="Precio maximo de venta"
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            className="form-control"
+            id="price_min"
+            onChange={handleChange}
+            placeholder="Precio minimo de venta"
           />
         </div>
         <div className="form-group">
@@ -61,7 +70,16 @@ const FiltersList = () => {
             className="form-control"
             id="area_max"
             onChange={handleChange}
-            placeholder="Superficie"
+            placeholder="Superficie maxima"
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            className="form-control"
+            id="area_min"
+            onChange={handleChange}
+            placeholder="Superficie minima"
           />
         </div>
         <button type="submit" className="search-box_button" id="searchbutton">

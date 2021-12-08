@@ -1,4 +1,5 @@
 export const announcementExample = {
+  id: "1223",
   price: 355000,
   images: [
     "https://prd.storagewhise.eu/public/latourpetit/Pictures/4568230/640/baaab301df4a42f9a94eda0b1c515853.jpg",
