@@ -8,7 +8,7 @@ import { faHome } from "@fortawesome/free-solid-svg-icons";
 import useUser from "../../hooks/useUser";
 
 const Header = () => {
-  const { user } = useUser();
+  const { user, logoutUser } = useUser();
 
   return (
     <nav className="header navbar container-fluid d-flex flex-row p-1 justify-content-around">
@@ -45,7 +45,9 @@ const Header = () => {
         <li className="header__item">
           <Link to="login">
             {" "}
-            <button>{user.isAuthenticated ? "Salir" : "Acceder"}</button>{" "}
+            <button onClick={() => logoutUser()}>
+              {user.isAuthenticated ? "Salir" : "Acceder"}
+            </button>{" "}
           </Link>
         </li>
       </ul>

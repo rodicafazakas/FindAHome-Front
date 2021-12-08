@@ -16,16 +16,16 @@ const MyFavourites = () => {
   };
 
   useEffect(() => {
-      let loggedInUser;
-      if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
-        const { token } = JSON.parse(
-          localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
-        );
-        loggedInUser = jwtDecode(token);
-      }
-      if (loggedInUser) {
-        loadUser(loggedInUser.id);
-      }
+    let loggedInUser;
+    if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
+      const { token } = JSON.parse(
+        localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
+      );
+      loggedInUser = jwtDecode(token);
+    }
+    if (loggedInUser) {
+      loadUser(loggedInUser.id);
+    }
   }, [loadUser]);
 
   return (

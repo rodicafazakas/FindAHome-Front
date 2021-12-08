@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import jwtDecode from "jwt-decode";
+import { useEffect } from "react";
 
 import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";
@@ -14,7 +15,7 @@ import MyFavourites from "./pages/MyFavourites/MyFavourites";
 import MyAdverts from "./pages/MyAdverts/MyAdverts";
 import MapView from "./components/MapView/MapView";
 import useUser from "./hooks/useUser";
-import { useEffect } from "react";
+import Logout from "./pages/Logout/Logout";
 
 function App() {
   const { loggedUser } = useUser();
@@ -41,6 +42,7 @@ function App() {
           <Route path="/announcements/:id" element={<Detail />} />
           <Route path="/register" element={<SignUp />} />
           <Route path="/login" element={<SignIn />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/announcements/new" element={<AnnouncementForm />} />
           <Route path="/myfavourites" element={<MyFavourites />} />
           <Route path="/myadverts" element={<MyAdverts />} />
