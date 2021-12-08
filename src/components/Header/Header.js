@@ -1,19 +1,14 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.styles.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 
-import jwtDecode from "jwt-decode";
+import useUser from "../../hooks/useUser";
 
 const Header = () => {
-  let loggedInUser;
-  if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)) {
-    const { token } = JSON.parse(
-      localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
-    );
-    loggedInUser = jwtDecode(token);
-  }
+  const { user } = useUser();
 
   return (
     <nav className="header navbar container-fluid d-flex flex-row p-1 justify-content-around">
@@ -30,8 +25,8 @@ const Header = () => {
       </ul>
 
       <ul className="header__list d-flex align-items-center">
-        {loggedInUser ? (
-          loggedInUser.customerType === "buyer" ? (
+        {user.isAuthenticated ? (
+          user.user.customerType === "buyer" ? (
             <li className="header__item">
               <Link to="myfavourites">
                 <button> Mis favoritos </button>
@@ -50,7 +45,7 @@ const Header = () => {
         <li className="header__item">
           <Link to="login">
             {" "}
-            <button>{loggedInUser ? "Salir" : "Acceder"}</button>{" "}
+            <button>{user.isAuthenticated ? "Salir" : "Acceder"}</button>{" "}
           </Link>
         </li>
       </ul>

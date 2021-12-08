@@ -55,3 +55,8 @@ export const deleteFavouriteAction = (userId, announcementId) => ({
   userId,
   announcementId,
 });
+
+export const loggedUserAction = (user) => ({
+  type: actionTypes.loggedUser,
+  user,
+});
