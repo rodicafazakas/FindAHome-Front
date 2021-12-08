@@ -1,21 +1,31 @@
 import { Marker } from "react-leaflet";
-import IconLocation from "../IconLocation/IconLocation";
+import markerIconPng from "leaflet/dist/images/marker-icon.png";
+import { Icon } from "leaflet";
 
 const Markers = (props) => {
   const { announcements } = props;
   console.log(announcements);
-  // eslint-disable-next-line array-callback-return
-  const markers = announcements.map((announcement, i) => {
+  return announcements.map((announcement, i) => {
     console.log(announcement);
-    <Marker
-      key={i}
-      position={`${announcement?.address?.coordinates?.latitude}`}
-      icon={IconLocation}
-    >
-      {" "}
-    </Marker>;
+    const position = [
+      `${announcement?.address?.coordinates?.latitude}`,
+      `${announcement?.address?.coordinates?.longitude}`,
+    ];
+
+    return (
+      <Marker
+        key={i}
+        position={position}
+        icon={
+          new Icon({
+            iconUrl: markerIconPng,
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+          })
+        }
+      />
+    );
   });
-  return markers;
 };
 
 export default Markers;

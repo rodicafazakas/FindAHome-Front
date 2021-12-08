@@ -103,6 +103,35 @@ const AnnouncementForm = () => {
     });
   };
 
+  const getCoordinates = async (address) => {
+    const response = await fetch(
+      `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${address}`
+    );
+    const coordinates = await response.json();
+    return coordinates[0];
+  };
+
+  const handleCheckAddress = (event) => {
+    event.preventDefault();
+    getCoordinates(
+      `${announcementData.city},${announcementData.address.street}`
+    ).then((location) => {
+      const newAddressData = {
+        ...addressData,
+        coordinates: {
+          latitude: location.lat,
+          longitude: location.lon,
+        },
+      };
+      setAddressData(newAddressData);
+
+      setAnnouncementData({
+        ...announcementData,
+        address: { ...newAddressData },
+      });
+    });
+  };
+
   const navigate = useNavigate();
   const onSubmit = (event) => {
     event.preventDefault();
@@ -120,28 +149,6 @@ const AnnouncementForm = () => {
       navigate(-1);
     }
   };
-
-  const [state, setState] = useState({
-    latitude: 0,
-    longitude: 0,
-  });
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      function (position) {
-        setState({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-        });
-      },
-      function (error) {
-        console.log(error);
-      },
-      {
-        enableHighAccuracy: true,
-      }
-    );
-  });
 
   return (
     <div className="form">
@@ -291,12 +298,6 @@ const AnnouncementForm = () => {
                 placeholder="Floor"
               />
             </div>
-            <div className="form-group">
-              <p>{state.latitude}</p>
-            </div>
-            <div className="form-group">
-              <p>{state.longitude}</p>
-            </div>
             <button
               type="submit"
               className="add-update"
@@ -304,6 +305,8 @@ const AnnouncementForm = () => {
             >
               {textButton}
             </button>
+
+            <button onClick={handleCheckAddress}>{`Check address`}</button>
           </form>
         </div>
       </div>
