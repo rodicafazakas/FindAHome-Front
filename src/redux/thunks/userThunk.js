@@ -21,7 +21,6 @@ export const loginUserThunk = (user) => async (dispatch) => {
   if (response.status === 200) {
     const token = result.token;
     const user = await jwtDecode(token);
-    console.log("thunk:" + JSON.stringify(user));
     dispatch(loginUserAction(user));
     localStorage.setItem(
       process.env.REACT_APP_LOCAL_STORAGE,
