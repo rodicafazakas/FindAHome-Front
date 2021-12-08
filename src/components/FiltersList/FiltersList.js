@@ -26,7 +26,7 @@ const FiltersList = () => {
 
   return (
     <div className="filters-list pt-3 pb-3">
-      <h4> Additional filters </h4>
+      <h5> Additional filters </h5>
       <form className="search" onSubmit={handleSubmit}>
         <div className="form-group">
           <input
