@@ -205,6 +205,7 @@ const AnnouncementForm = () => {
                 id="neighbourhood"
                 value={announcementData.neighbourhood}
                 onChange={handleChange}
+                name="Distrito"
                 placeholder="Distrito"
               />
             </div>

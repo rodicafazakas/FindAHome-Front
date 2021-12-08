@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -7,6 +7,7 @@ import { userExample } from "../../factories/userFactory";
 import configureStore from "../../redux/store/store";
 import AnnouncementCard from "./AnnouncementCard";
 import { server } from "../../mocks/server/server";
+import userEvent from "@testing-library/user-event";
 
 beforeAll(() => {
   server.listen();
@@ -56,15 +57,16 @@ describe("Given an AnnouncementCard component", () => {
       const announcementFake = announcementExample;
       const userFake = userExample;
       const user = {
+        isAuthenticated: true,
         user: userFake,
       };
-      let isFavourite = true;
+      let favoriteColor = "#black";
       render(
         <Provider store={store}>
           <Router>
             <AnnouncementCard
               announcement={announcementFake}
-              isFavourite={isFavourite}
+              isFavourite={false}
               isListingPage={true}
               user={user}
             />
@@ -72,10 +74,10 @@ describe("Given an AnnouncementCard component", () => {
         </Provider>
       );
       const heartIcon = screen.getByTestId("heart-icon");
-      fireEvent.click(heartIcon);
+      userEvent.click(heartIcon);
 
       await waitFor(async () => {
-        expect(isFavourite).toBe(!isFavourite);
+        expect(favoriteColor).toBe(!favoriteColor);
       });
     });
   });

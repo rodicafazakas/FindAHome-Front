@@ -1,5 +1,7 @@
 import { userExample } from "../../factories/userFactory";
 import {
+  loadUserAction,
+  loggedUserAction,
   loginUserAction,
   logoutUserAction,
   registerUserAction,
@@ -44,6 +46,40 @@ describe("Given a usersReducer component", () => {
       };
       const action = registerUserAction(user);
       const newUser = usersReducer(user, action);
+      expect(newUser).toEqual(expectedUser);
+    });
+  });
+
+  describe("When it receives a logged action", () => {
+    test("Then it should return an object with property isAuthenticated set to true and a new user", () => {
+      const userFake = userExample;
+      const initialUser = {
+        isAuthenticated: false,
+        user: userFake,
+      };
+      const expectedUser = {
+        isAuthenticated: true,
+        user: userFake,
+      };
+      const action = loggedUserAction(userFake);
+      const newUser = usersReducer(initialUser, action);
+      expect(newUser).toEqual(expectedUser);
+    });
+  });
+
+  describe("When it receives a loadUser action", () => {
+    test("Then it should return an object with property isAuthenticated set to true and a new user", () => {
+      const userFake = userExample;
+      const initialUser = {
+        isAuthenticated: false,
+        user: userFake,
+      };
+      const expectedUser = {
+        isAuthenticated: true,
+        user: userFake,
+      };
+      const action = loadUserAction(userFake);
+      const newUser = usersReducer(initialUser, action);
       expect(newUser).toEqual(expectedUser);
     });
   });

@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import configureStore from "../../redux/store/store";
 import { server } from "../../mocks/server/server";
 import AnnouncementForm from "./AnnouncementForm";
+import userEvent from "@testing-library/user-event";
 
 beforeAll(() => {
   server.listen();
@@ -32,6 +33,21 @@ describe("Given an AnnouncementForm component", () => {
       const submitButton = screen.getAllByRole("button")[0];
 
       expect(submitButton).toBeDisabled();
+    });
+  });
+
+  describe("When the user types in inputs", () => {
+    test("Then it should change a value", () => {
+      render(
+        <Provider store={store}>
+          <Router>
+            <AnnouncementForm />
+          </Router>
+        </Provider>
+      );
+
+      userEvent.type(screen.getByPlaceholderText("Distrito"), `Born`);
+      expect(screen.getByPlaceholderText("Distrito")).toHaveValue("Born");
     });
   });
 
