@@ -49,7 +49,7 @@ const Detail = () => {
             </div>
             <div className="detail__info d-flex flex-row">
               <span> {announcement.bedrooms} </span>
-              <span> HABITACIONES </span>
+              <span className="detail__info__item"> habitaciones </span>
             </div>
           </div>
 
@@ -59,7 +59,7 @@ const Detail = () => {
             </div>
             <div className="detail__info d-flex flex-row">
               <span> {announcement.area} </span>
-              <span> SUPERFICIE </span>
+              <span className="detail__info__item"> m2 </span>
             </div>
           </div>
 
@@ -69,7 +69,7 @@ const Detail = () => {
             </div>
             <div className="detail__info">
               <span> {announcement.bathrooms} </span>
-              <span> BANOS </span>
+              <span className="detail__info__item"> baños </span>
             </div>
           </div>
 
@@ -79,7 +79,7 @@ const Detail = () => {
             </div>
             <div className="detail__info d-flex flex-row">
               <span> {announcement.terrace} </span>
-              <span> TERRACE </span>
+              <span className="detail__info__item"> terraza </span>
             </div>
           </div>
 
@@ -89,7 +89,7 @@ const Detail = () => {
             </div>
             <div className="detail__info d-flex flex-row">
               <span> {announcement.elevator} </span>
-              <span> ELEVATOR </span>
+              <span className="detail__info__item"> ascensor </span>
             </div>
           </div>
 
@@ -99,7 +99,7 @@ const Detail = () => {
             </div>
             <div className="detail__info d-flex flex-row">
               <span> {announcement.parking} </span>
-              <span> APARCAMIENTO </span>
+              <span className="detail__info__item"> aparcamiento </span>
             </div>
           </div>
         </div>
