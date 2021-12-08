@@ -28,9 +28,9 @@ const AnnouncementForm = () => {
       bedrooms: "",
       bathrooms: "",
       description: "",
-      parking: "",
-      terrace: "",
-      elevator: "",
+      parking: false,
+      terrace: false,
+      elevator: false,
       city: "",
       neighbourhood: "",
       dwellingType: "",
@@ -44,44 +44,28 @@ const AnnouncementForm = () => {
   const [announcementData, setAnnouncementData] = useState(initialAnnouncement);
   const [addressData, setAddressData] = useState(initialAnnouncement.address);
   const [textButton, setTextButton] = useState("");
-  const [buttonDisabled, setButtonDisabled] = useState(true);
 
   useEffect(() => {
-    if (announcement && announcement.address) {
+    if (announcement && announcement.address && urlSearchParams.get("id")) {
       setAnnouncementData(announcement);
       setAddressData(announcement.address);
       setTextButton("Modificar anuncio");
     } else {
       setTextButton("Añadir anuncio");
     }
-  }, [announcement]);
-
-  useEffect(() => {
-    if (announcementData && addressData) {
-      setButtonDisabled(
-        announcementData.price === "" ||
-          announcementData.images === "" ||
-          announcementData.area === "" ||
-          announcementData.bedrooms === "" ||
-          announcementData.bathrooms === "" ||
-          announcementData.description === "" ||
-          announcementData.parking === "" ||
-          announcementData.elevator === "" ||
-          announcementData.terrace === "" ||
-          announcementData.elevator === "" ||
-          announcementData.city === "" ||
-          announcementData.neighbourhood === "" ||
-          announcementData.dwellingType === "" ||
-          announcementData.address.street === "" ||
-          announcementData.address.floor === ""
-      );
-    }
-  }, [announcementData, addressData]);
+  }, [announcement, urlSearchParams]);
 
   const handleChange = (event) => {
     setAnnouncementData({
       ...announcementData,
       [event.target.id]: event.target.value,
+    });
+  };
+
+  const handleCheckboxChange = (event) => {
+    setAnnouncementData({
+      ...announcementData,
+      [event.target.id]: event.target.checked,
     });
   };
 
@@ -93,19 +77,20 @@ const AnnouncementForm = () => {
   };
 
   const handleAddressChange = (event) => {
-    setAddressData({
+    const newAddressData = {
       ...addressData,
       [event.target.id]: event.target.value,
-    });
+    };
+    setAddressData(newAddressData);
     setAnnouncementData({
       ...announcementData,
-      address: { ...addressData },
+      address: { ...newAddressData },
     });
   };
 
   const getCoordinates = async (address) => {
     const response = await fetch(
-      `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${address}`
+      `https://nominatim.openstreetmap.org/search?format=json&limit=1&${address}`
     );
     const coordinates = await response.json();
     return coordinates[0];
@@ -114,7 +99,7 @@ const AnnouncementForm = () => {
   const handleCheckAddress = (event) => {
     event.preventDefault();
     getCoordinates(
-      `${announcementData.city},${announcementData.address.street}`
+      `city=${announcementData.city}&street=${announcementData.address.street}`
     ).then((location) => {
       const newAddressData = {
         ...addressData,
@@ -135,17 +120,19 @@ const AnnouncementForm = () => {
   const navigate = useNavigate();
   const onSubmit = (event) => {
     event.preventDefault();
-    if (announcement && announcement.id) {
+    if (announcement && announcement.id && urlSearchParams.get("id")) {
       updateAnnouncement({
         ...announcementData,
         id: announcement["id"],
       });
+      setAnnouncementData(initialAnnouncement);
       navigate(-1);
     } else {
       setAnnouncementData({
         ...announcementData,
       });
       createAnnouncement(announcementData);
+      setAnnouncementData(initialAnnouncement);
       navigate(-1);
     }
   };
@@ -153,7 +140,11 @@ const AnnouncementForm = () => {
   return (
     <div className="form">
       <div className="container">
-        <h4>{announcement.id ? "Modificar anuncio" : "Crear anuncio"}</h4>
+        <h5>
+          {announcement.id && urlSearchParams.get("id")
+            ? "Modificar anuncio"
+            : "Crear anuncio"}
+        </h5>
         <div className="row">
           <form autoComplete="off" noValidate onSubmit={onSubmit}>
             <div className="form-group">
@@ -250,34 +241,37 @@ const AnnouncementForm = () => {
               />
             </div>
             <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                id="terrace"
-                value={announcementData.terrace}
-                onChange={handleChange}
-                placeholder="Terraza"
-              />
+              <label>
+                <input
+                  type="checkbox"
+                  id="terrace"
+                  checked={announcementData.terrace}
+                  onChange={handleCheckboxChange}
+                />{" "}
+                Terraza
+              </label>
             </div>
             <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                id="elevator"
-                value={announcementData.elevator}
-                onChange={handleChange}
-                placeholder="Ascensor"
-              />
+              <label>
+                <input
+                  type="checkbox"
+                  id="elevator"
+                  checked={announcementData.elevator}
+                  onChange={handleCheckboxChange}
+                />{" "}
+                Ascensor
+              </label>
             </div>
             <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                id="parking"
-                value={announcementData.parking}
-                onChange={handleChange}
-                placeholder="Aparcamiento"
-              />
+              <label>
+                <input
+                  type="checkbox"
+                  id="parking"
+                  checked={announcementData.parking}
+                  onChange={handleCheckboxChange}
+                />{" "}
+                Aparcamiento
+              </label>
             </div>
             <div className="form-group">
               <input
@@ -299,11 +293,7 @@ const AnnouncementForm = () => {
                 placeholder="Floor"
               />
             </div>
-            <button
-              type="submit"
-              className="add-update"
-              disabled={buttonDisabled}
-            >
+            <button type="submit" className="add-update">
               {textButton}
             </button>
 
