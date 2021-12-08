@@ -32,7 +32,7 @@ const Listing = () => {
   };
 
   const seeMapa = (city) => {
-    navigate(`/announcements/${city}/mapa`);
+    navigate(`/announcements/mapa${location.search}`);
   };
 
   const { addFavourite, deleteFavourite } = useAnnouncement();

@@ -36,6 +36,14 @@ export const createAnnouncementThunk = (announcement) => async (dispatch) => {
 
   announcementFormData.append("address[street]", announcement.address.street);
   announcementFormData.append("address[floor]", announcement.address.floor);
+    announcementFormData.append(
+      "address[coordinates][latitude]",
+      announcement.address.coordinates.latitude
+    );
+    announcementFormData.append(
+      "address[coordinates][longitude]",
+      announcement.address.coordinates.longitude
+    );
 
   const response = await fetch(`${apiUrl}/announcements/new`, {
     method: "POST",
