@@ -31,7 +31,7 @@ function App() {
   }, [loggedUser]);
 
   return (
-    <div className="App">
+    <div className="app">
       <Router>
         <Header />
         <Routes>

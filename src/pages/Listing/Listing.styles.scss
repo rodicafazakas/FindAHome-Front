@@ -9,13 +9,13 @@
 
 .announcements-list {
   display: flex;
+  justify-content: center;
   align-items: center;
   flex-flow: column;
-  justify-content: center;
 }
 
 .announcements-list > * {
-  margin-bottom: 17px;
+  margin: 15px;
 }
 
 @media (min-width: 600px) {
