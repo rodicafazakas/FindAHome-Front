@@ -11,7 +11,7 @@ const Header = () => {
   const { user, logoutUser } = useUser();
 
   return (
-    <nav className="header navbar container-fluid d-flex flex-row p-1 justify-content-around">
+    <nav className="header d-flex flex-row p-1 justify-content-around">
       <ul className="header__logotitle d-flex flex-row">
         <li className="header__logo d-flex nav-item">
           <FontAwesomeIcon icon={faHome} />
@@ -24,7 +24,7 @@ const Header = () => {
         </li>
       </ul>
 
-      <ul className="header__list d-flex align-items-center">
+      <ul className="header__list d-flex">
         {user.isAuthenticated ? (
           user.user.customerType === "buyer" ? (
             <li className="header__item">

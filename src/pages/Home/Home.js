@@ -24,13 +24,7 @@ const Home = () => {
       </div>
       <div className="homepage__search">
         <form className="search" onSubmit={handleSubmit}>
-          <div className="search-text">
-            <p> Encuentra tu casa aqui </p>
-          </div>
           <div className="search-box">
-            <label htmlFor="searchcity" className="visuallyhidden">
-              {" "}
-            </label>
             <input
               className="search-box__input"
               type="text"
@@ -39,7 +33,6 @@ const Home = () => {
               onChange={handleChange}
               placeholder="Search in Barcelona or Madrid"
             />
-
             <button
               type="submit"
               className="search-box_button"
