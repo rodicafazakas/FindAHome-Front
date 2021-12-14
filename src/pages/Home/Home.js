@@ -20,7 +20,16 @@ const Home = () => {
   return (
     <div className="homepage">
       <div className="homepage__image">
-        <h3 className="bienvenida"> Bienvenid@ a FindAHome! </h3>
+        <header>
+          <h4 className="bienvenida">
+            <strong> Bienvenid@ a FindAHome! </strong>{" "}
+          </h4>
+          <h4 className="bienvenida-text">
+            {" "}
+            Te acompanamos en una de las decisiones mas emocionantes y decisivas
+            de nuestra vida: comprar un piso.{" "}
+          </h4>
+        </header>
       </div>
       <div className="homepage__search">
         <form className="search" onSubmit={handleSubmit}>
@@ -31,7 +40,7 @@ const Home = () => {
               id="searchcity"
               value={searchInput}
               onChange={handleChange}
-              placeholder="Search in Barcelona or Madrid"
+              placeholder="Buscar en Barcelona o Madrid"
             />
             <button
               type="submit"

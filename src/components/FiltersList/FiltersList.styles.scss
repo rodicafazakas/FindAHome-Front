@@ -1,10 +1,31 @@
-.filters-list {
-  display: none;
+@import "../../../src/styles/variables";
+
+.filters {
+  max-width: 270px;
+  max-height: 500px;
+  margin: 50px 40px;
+  padding: 20px;
+  background-color: $secondary;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+
+  &__title {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+  }
 }
 
-@media (min-width: 600px) {
-  .filters-list {
-    display: flex;
-    justify-content: flex-start;
-  }
+.my-form-control {
+  border-radius: $border-radius;
+  border: white;
+  margin-top: 15px;
+  height: $input-height-mobile;
+  width: 230px;
+}
+
+.search_button {
+  width: 230px;
 }
