@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import "./FiltersList.styles.scss";
 
 const FiltersList = () => {
   // eslint-disable-next-line no-restricted-globals
@@ -25,55 +26,59 @@ const FiltersList = () => {
   };
 
   return (
-    <div className="filters-list pt-3 pb-3">
-      <h5> Additional filters </h5>
-      <form className="search" onSubmit={handleSubmit}>
-        <div className="form-group">
+    <div className="filters">
+      <h5 className="filters__title"> Otros filtros </h5>
+      <form className="filters__form" onSubmit={handleSubmit}>
+        <div className="my-form-group">
           <input
             type="text"
-            className="form-control"
+            className="my-form-control"
             id="neighbourhood"
             onChange={handleChange}
             placeholder="Distrito"
           />
         </div>
-        <div className="form-group">
+        <div className="my-form-group">
           <input
             type="text"
-            className="form-control"
+            className="my-form-control"
             id="price_max"
             onChange={handleChange}
             placeholder="Precio maximo de venta"
           />
         </div>
-        <div className="form-group">
+        <div className="my-form-group">
           <input
             type="text"
-            className="form-control"
+            className="my-form-control"
             id="price_min"
             onChange={handleChange}
             placeholder="Precio minimo de venta"
           />
         </div>
-        <div className="form-group">
+        <div className="my-form-group">
           <input
             type="text"
-            className="form-control"
+            className="my-form-control"
             id="area_max"
             onChange={handleChange}
             placeholder="Superficie maxima"
           />
         </div>
-        <div className="form-group">
+        <div className="my-form-group">
           <input
             type="text"
-            className="form-control"
+            className="my-form-control"
             id="area_min"
             onChange={handleChange}
             placeholder="Superficie minima"
           />
         </div>
-        <button type="submit" className="search-box_button" id="searchbutton">
+        <button
+          type="submit"
+          className="search_button my-form-control"
+          id="searchbutton"
+        >
           Buscar
         </button>
       </form>
