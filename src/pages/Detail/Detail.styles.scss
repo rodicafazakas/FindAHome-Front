@@ -1,33 +1,53 @@
 @import "../../../src/styles/variables";
 
-.main-container {
-  height: fit-content;
-  margin: 15px;
+.detail {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 30px;
+  gap: 10px;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+
+  &__neighbourhood {
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+
+  &__description {
+    text-align: center;
+    align-self: center;
+  }
+
+  &__item {
+    display: flex;
+    padding-left: 10px;
+  }
+}
+
+.neighbourhood {
+  margin-bottom: 0;
+  text-align: center;
+  align-self: center;
+  font-weight: bold;
 }
 
 .icon {
   color: $button-color;
   align-self: flex-start;
-  width: 20%;
+  width: 15%;
   margin-right: 15px;
 }
 
-.detail__container {
-  display: block;
-  width: 100%;
-}
-
-.detail__price {
-  display: block;
-  width: 100%;
-  padding: 5px;
-}
-
-.button__price {
+.button-price {
   display: block;
   width: 100%;
   margin: 7px 0 15px;
   padding: 5px;
+}
+
+.info-price {
+  display: none;
 }
 
 .detail__info__item {
@@ -35,19 +55,60 @@
 }
 
 @media (min-width: 600px) {
-  .detail-main-container {
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 35px;
+  .detail {
+    height: auto;
+    margin: 30px;
+    display: grid;
+    grid-template-columns: 33% 33% 34%;
+    grid-template-rows: 30% 30% 40%;
+
+    &__image {
+      grid-column: 1/4;
+      grid-row: 1/3;
+    }
+
+    &__district-description {
+      grid-column: 1/3;
+      grid-row: 3/4;
+      justify-self: start;
+      text-align: left;
+    }
+
+    &__container {
+      grid-column: 3/4;
+      grid-row: 2/4;
+      background-color: white;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      justify-items: center;
+    }
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   }
 
-  .detail-container {
-    display: flex;
-    flex-direction: column;
+  .neighbourhood {
+    margin-bottom: 0;
+    align-self: flex-start;
+    font-weight: bold;
   }
 
-  .detail__info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .button-price {
+    display: none;
+  }
+
+  .info-price {
+    grid-column: span 2;
+    background-color: white;
   }
 }

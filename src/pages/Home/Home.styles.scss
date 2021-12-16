@@ -58,7 +58,7 @@
 @media (min-width: 550px) {
   .homepage {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background: url("../../images/home1.jpg") no-repeat center center fixed;
     background-size: cover;
     margin-top: 0;
@@ -116,17 +116,17 @@
     background-size: cover;
     align-self: stretch;
     width: 100vw;
-    height: max-content;
+    height: 100%;
     margin-top: 0;
 
     &__image {
       background-color: transparent;
-      height: 350px;
+      height: 300px;
     }
 
     &__search {
       background-color: transparent;
-      height: max-content;
+      height: 406;
     }
   }
 

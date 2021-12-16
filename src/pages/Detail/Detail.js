@@ -22,85 +22,91 @@ const Detail = () => {
   }, [loadAnnouncement, id]);
 
   return (
-    <div className="row main-container">
-      <div className="col detail d-flex flex-column align-items-center">
-        <div className="detail__image img-fluid">
-          <img
-            src={announcement.images}
-            alt="apartment"
-            width="290"
-            height="125"
-          />
-        </div>
+    <div className="detail">
+      <div className="detail__image">
+        <img
+          src={announcement.images}
+          alt="apartment"
+          width="290"
+          height="125"
+        />
+      </div>
+      <div className="detail__price">
+        {" "}
+        <button className="button-price"> {announcement.price} € </button>
+      </div>
+      <div classname="detail__district-description">
         <div className="detail__neighbourhood">
-          <p> Piso en {announcement.neighbourhood} </p>
+          <p className="neighbourhood">
+            {" "}
+            Piso en {announcement.neighbourhood}{" "}
+          </p>
         </div>
-        <div className="detail__price">
-          {" "}
-          <button className="button__price"> {announcement.price} € </button>
-        </div>
-        <div className="detail__description text-center align-self-center">
+        <div className="detail__description">
           <p> {announcement.description} </p>
         </div>
-        <div className="detail__container">
-          <div className="detail__item d-flex flex-row">
-            <div className="icon ml-1">
-              <FontAwesomeIcon icon={faBed} color="#ef8b42" />
-            </div>
-            <div className="detail__info d-flex flex-row">
-              <span> {announcement.bedrooms} </span>
-              <span className="detail__info__item"> habitaciones </span>
-            </div>
+      </div>
+      <div className="detail__container">
+        <p className="info-price">
+          <strong>{announcement.price} €</strong>
+        </p>
+        <div className="detail__item">
+          <div className="icon">
+            <FontAwesomeIcon icon={faBed} color="#ef8b42" />
           </div>
-
-          <div className="detail__item d-flex flex-row">
-            <div className="icon">
-              <FontAwesomeIcon icon={faChartArea} color="#ef8b42" />
-            </div>
-            <div className="detail__info d-flex flex-row">
-              <span> {announcement.area} </span>
-              <span className="detail__info__item"> m2 </span>
-            </div>
+          <div className="detail__info">
+            <span> {announcement.bedrooms} </span>
+            <span className="detail__info__item"> habitaciones </span>
           </div>
+        </div>
 
-          <div className="detail__item d-flex flex-row">
-            <div className="icon">
-              <FontAwesomeIcon icon={faBath} color="#ef8b42" />
-            </div>
-            <div className="detail__info">
-              <span> {announcement.bathrooms} </span>
-              <span className="detail__info__item"> baños </span>
-            </div>
+        <div className="detail__item">
+          <div className="icon">
+            <FontAwesomeIcon icon={faChartArea} color="#ef8b42" />
           </div>
-
-          <div className="detail__item d-flex flex-row">
-            <div className="icon">
-              <FontAwesomeIcon icon={faTree} color="#ef8b42" />
-            </div>
-            <div className="detail__info d-flex flex-row">
-              <span> {announcement.terrace} </span>
-              <span className="detail__info__item"> terraza </span>
-            </div>
+          <div className="detail__info">
+            <span> {announcement.area} </span>
+            <span className="detail__info__item"> m2 </span>
           </div>
+        </div>
 
-          <div className="detail__item d-flex flex-row">
-            <div className="icon">
-              <FontAwesomeIcon icon={faArrowsAltV} color="#ef8b42" />
-            </div>
-            <div className="detail__info d-flex flex-row">
-              <span> {announcement.elevator} </span>
-              <span className="detail__info__item"> ascensor </span>
-            </div>
+        <div className="detail__item">
+          <div className="icon">
+            <FontAwesomeIcon icon={faBath} color="#ef8b42" />
           </div>
+          <div className="detail__info">
+            <span> {announcement.bathrooms} </span>
+            <span className="detail__info__item"> baños </span>
+          </div>
+        </div>
 
-          <div className="detail__item d-flex flex-row">
-            <div className="icon">
-              <FontAwesomeIcon icon={faParking} color="#ef8b42" />
-            </div>
-            <div className="detail__info d-flex flex-row">
-              <span> {announcement.parking} </span>
-              <span className="detail__info__item"> aparcamiento </span>
-            </div>
+        <div className="detail__item d-flex flex-row">
+          <div className="icon">
+            <FontAwesomeIcon icon={faTree} color="#ef8b42" />
+          </div>
+          <div className="detail__info">
+            <span> {announcement.terrace} </span>
+            <span className="detail__info__item"> terraza </span>
+          </div>
+        </div>
+
+        <div className="detail__item">
+          <div className="icon">
+            <FontAwesomeIcon icon={faArrowsAltV} color="#ef8b42" />
+          </div>
+          <div className="detail__info">
+            <span> {announcement.elevator} </span>
+            <span className="detail__info__item"> ascensor </span>
+          </div>
+        </div>
+
+        <div className="detail__item">
+          <div className="icon">
+            <FontAwesomeIcon icon={faParking} color="#ef8b42" />
+          </div>
+          <div className="detail__info">
+            <span> {announcement.parking} </span>
+            <span className="detail__info__item"> aparcamiento </span>
           </div>
         </div>
       </div>
