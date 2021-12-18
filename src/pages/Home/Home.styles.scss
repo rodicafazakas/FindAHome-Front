@@ -1,6 +1,8 @@
 @import "../../../src/styles/variables";
 
 .homepage {
+  height: calc(100vh-55px);
+
   &__image {
     background-image: url("../../images/home1.jpg");
     width: 100vw;
@@ -65,12 +67,12 @@
 
     &__image {
       background: transparent;
-      height: 200px;
+      height: 350px;
     }
 
     &__search {
       background-color: transparent;
-      height: max-content;
+      height: 250px;
     }
   }
 
@@ -85,7 +87,7 @@
     align-items: center;
     background-color: $button-color;
     height: 150px;
-    width: 90%;
+    width: 85vw;
     margin: 20px;
 
     &__input {
@@ -121,12 +123,12 @@
 
     &__image {
       background-color: transparent;
-      height: 300px;
+      height: 350px;
     }
 
     &__search {
       background-color: transparent;
-      height: 406;
+      height: 251px;
     }
   }
 
@@ -137,7 +139,7 @@
     align-items: center;
     background-color: $button-color;
     height: 180px;
-    width: 920px;
+    width: 85vw;
     margin: 20px;
 
     &__input {
