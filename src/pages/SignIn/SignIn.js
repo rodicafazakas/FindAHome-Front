@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import useUser from "../../hooks/useUser";
+import "./SignIn.styles.scss";
 
 const SignIn = () => {
   const [userData, setUserData] = useState();
@@ -27,8 +28,8 @@ const SignIn = () => {
   };
 
   return (
-    <div className="form">
-      <div className="row">
+    <div className="signin-form center">
+      <div className="row text-center">
         <h1> Accede a tu cuenta </h1>
         <form className="login-form col form-group" onSubmit={onSubmit}>
           <input
@@ -51,7 +52,7 @@ const SignIn = () => {
           </button>
         </form>
         <div className="registrar">
-          <p> No tengo cuenta y quiero registrarme </p>
+          <p> No tengo cuenta y quiero registrarme. </p>
           <a href="/register"> Registrar </a>
         </div>
       </div>

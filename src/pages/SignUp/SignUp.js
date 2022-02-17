@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import useUser from "../../hooks/useUser";
+import "./SignUp.styles.scss";
 
 const SignUp = () => {
   const [userData, setUserData] = useState();
@@ -22,8 +23,8 @@ const SignUp = () => {
   };
 
   return (
-    <div className="container ">
-      <div className="row text-center align-items-center">
+    <div className="container center">
+      <div className="row text-center">
         <h2> Crea tu cuenta </h2>
         <form
           className="register-form col form-group"
