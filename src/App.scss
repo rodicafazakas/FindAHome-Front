@@ -1,3 +1,5 @@
+@import "./styles/_variables.scss";
+
 .app {
   text-align: center;
 }
@@ -9,8 +11,17 @@
 }
 
 .container {
-  min-height: 80vh;
+  min-height: 60vh;
   width: 350px;
+  border: 1px solid grey;
+  border-radius: $border-radius;
+  padding: 0 30px;
+  margin-top: 40px;
+}
+
+.form-control {
+  border-radius: $border-radius;
+  margin: 10px;
 }
 
 .map {
@@ -22,9 +33,4 @@ h1 {
   font-size: 24px;
   margin: 20px 0;
   text-align: center;
-}
-
-.form-control {
-  border-radius: 10px;
-  margin: 10px 15px;
 }
