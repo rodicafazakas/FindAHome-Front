@@ -28,7 +28,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="signin-form center">
+    <div className="container center">
       <div className="row text-center">
         <h1> Accede a tu cuenta </h1>
         <form className="login-form col form-group" onSubmit={onSubmit}>

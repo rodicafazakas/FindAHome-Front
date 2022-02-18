@@ -8,6 +8,11 @@
   align-items: center;
 }
 
+.container {
+  min-height: 80vh;
+  width: 350px;
+}
+
 .map {
   width: 100vw;
   height: 100vh;
