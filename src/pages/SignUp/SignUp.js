@@ -25,7 +25,7 @@ const SignUp = () => {
   return (
     <div className="container center">
       <div className="row text-center">
-        <h2> Crea tu cuenta </h2>
+        <h3> Crea tu cuenta </h3>
         <form
           className="register-form col form-group"
           autoComplete="off"
