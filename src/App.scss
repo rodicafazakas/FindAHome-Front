@@ -11,10 +11,11 @@
 }
 
 .container {
-  min-height: 60vh;
+  min-height: 55vh;
   width: 350px;
-  border: 1px solid grey;
+  border: 2px solid #bdbdbd;
   border-radius: $border-radius;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.5px 2.5px 1.9px;
   padding: 0 30px;
   margin-top: 40px;
 }
@@ -22,6 +23,7 @@
 .form-control {
   border-radius: $border-radius;
   margin: 10px;
+  width: 275px;
 }
 
 .map {
