@@ -30,7 +30,7 @@ const SignIn = () => {
   return (
     <div className="container center">
       <div className="row text-center">
-        <h3> Accede a tu cuenta </h3>
+        <h3 className='form-title'> Accede a tu cuenta </h3>
         <form className="login-form col form-group" onSubmit={onSubmit}>
           <input
             className="username form-control"
