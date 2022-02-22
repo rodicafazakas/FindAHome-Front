@@ -13,7 +13,7 @@ const MyFavourites = () => {
   const deleteFromFav = async (userId, announcementId, event) => {
     event.stopPropagation();
     await deleteFavourite(userId, announcementId);
-    loadUser(user.user.id)
+    loadUser(user.user.id);
   };
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const MyFavourites = () => {
 
   return (
     <div className="myfavourites col">
-      <h2> Mis favoritos </h2>
+      <h1> Mis favoritos </h1>
       {user.isAuthenticated && user.user.customerType && user.user.favourites
         ? user.user.favourites.map((fav) => (
             <AnnouncementCard

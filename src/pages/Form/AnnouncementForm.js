@@ -140,7 +140,7 @@ const AnnouncementForm = () => {
   return (
     <div className="form">
       <div className="container">
-        <h5>
+        <h5 className="form-title">
           {announcement.id && urlSearchParams.get("id")
             ? "Modificar anuncio"
             : "Crear anuncio"}
