@@ -22,12 +22,13 @@ const Home = () => {
       <div className="homepage__image">
         <header>
           <h4 className="bienvenida">
-            <strong> Bienvenid@ a FindAHome! </strong>{" "}
+            <strong> Bienvenid@ a FindAHome! </strong>
           </h4>
           <h4 className="bienvenida-text">
-            {" "}
-            Te acompanamos en una de las decisiones mas emocionantes y decisivas
-            de nuestra vida: comprar un piso.{" "}
+            <strong>
+              Te acompañamos en una de las decisiones mas emocionantes e
+              importantes de tu vida: comprar un piso.
+            </strong>
           </h4>
         </header>
       </div>

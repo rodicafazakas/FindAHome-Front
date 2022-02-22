@@ -5,55 +5,81 @@
 
   &__image {
     background-image: url("../../images/home1.jpg");
-    width: 100vw;
-    height: 205px;
     background-size: cover;
+    width: 100vw;
     margin-top: 0;
   }
 
   &__search {
-    height: 380px;
-    background-color: $secondary;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 }
 
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  margin: 0 30px;
+  padding: 0 20px;
+}
+
 .bienvenida {
   padding-top: 30px;
-  margin: 0;
   text-align: center;
 }
 
-.bienvenida-text {
-  display: none;
-}
-
 .search-box {
-  background-color: $primary;
-  height: 275px;
-  width: 290px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: stretch;
-  padding: 30px;
-
   &__input {
-    width: 230px;
-    height: $input-height-mobile;
-    border-radius: 10px;
     border: none;
+    border-radius: $border-radius;
     box-shadow: $box-shadow;
   }
 
   &__button {
-    width: 230px;
-    height: $input-height-mobile;
     border: none;
-    border: $button-color;
     box-shadow: $box-shadow;
+  }
+}
+
+@media (max-width: 550px) {
+  .homepage {
+    &__image {
+      height: 205px;
+    }
+
+    &__search {
+      height: 380px;
+      background-color: $secondary;
+    }
+  }
+
+  .bienvenida-text {
+    display: none;
+  }
+
+  .search-box {
+    background-color: $primary;
+    height: 275px;
+    width: 290px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+    padding: 30px;
+
+    &__input {
+      width: 230px;
+      height: $input-height-mobile;
+    }
+
+    &__button {
+      width: 230px;
+      height: $input-height-mobile;
+      border: $button-color;
+    }
   }
 }
 
@@ -77,13 +103,14 @@
   }
 
   .bienvenida-text {
+    margin-top: 25px;
     text-align: center;
   }
 
   .search-box {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: $button-color;
     height: 150px;
@@ -93,15 +120,10 @@
     &__input {
       width: 60%;
       height: 35px;
-      border-radius: 10px;
-      border: none;
-      box-shadow: $box-shadow;
     }
 
     &__button {
       width: 40%;
-      border: none;
-      box-shadow: $box-shadow;
       color: black;
       background-color: white;
     }
@@ -135,7 +157,7 @@
   .search-box {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: $button-color;
     height: 180px;
@@ -160,5 +182,9 @@
 
   .search-box > * {
     height: 70px;
+  }
+
+  .bienvenida-text {
+    text-align: center;
   }
 }
